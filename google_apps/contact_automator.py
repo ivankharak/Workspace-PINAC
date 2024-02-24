@@ -40,7 +40,6 @@ class ContactManager:
         if len(results) == 1:
             name = results[0]["person"]["names"][0]["displayName"]
             phone_number = results[0]["person"]["phoneNumbers"][0]["canonicalForm"]
-            print(f"{name}: {phone_number}")
             return phone_number
 
         elif len(results) > 1:
@@ -49,7 +48,7 @@ class ContactManager:
                 name = results[person]['person']['names'][0]['displayName']
                 ph_no = results[person]['person']['phoneNumbers'][0]['canonicalForm']
                 contact_list.append([name, ph_no])
-                return contact_list
+            return contact_list
         return None
 
     def get_email_address(self, query):
@@ -69,15 +68,20 @@ class ContactManager:
         if len(results) == 1:
             name = results[0]["person"]["names"][0]["displayName"]
             email = results[0]["person"]["emailAddresses"][0]["value"]
-            print(f"{name}: {email}")
             return email
 
         elif len(results) > 1:
-            self._list_contacts_with_email_addresses(results)
-            selection = self._get_user_selection(len(results))
-            if selection is not None:
-                return results[selection]["person"]["emailAddresses"][0]["value"]
+            email_list = []
+            for person in range(len(results)):
+                try:
+                    name = results[person]['person']['names'][0]['displayName']
+                    email = results[person]['person']['emailAddresses'][0]['value']
+                    email_list.append([name, email])
 
+                except Exception as error:
+                    email_list = None
+                    print(f"{type(error)} for {error}")
+            return email_list
         return None
 
     def create_contact(self, **kwargs):
