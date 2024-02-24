@@ -26,7 +26,7 @@ We are currently in the initial stages of development, laying the groundwork for
 # Project File Structure 📁 
 Proposed file structure
 
-        app_automation/
+        .
         ├── ai_models/                          # folder houses code for interacting with AI models
         │   ├── chatgpt/
         │   ├── gemini/
