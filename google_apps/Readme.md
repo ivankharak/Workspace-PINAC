@@ -19,7 +19,9 @@ Go to the <a href="https://developers.google.com/docs/api/quickstart/python#auth
 
 ### 4. Install the Client Library
 
-Use your chosen language's package manager (e.g., pip for Python, npm for JavaScript) to install the relevant client library. Refer to the library's documentation for specific installation instructions.
+```bash
+pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
+```
 
 ### 5. Write Your Code !
 
