@@ -61,7 +61,7 @@ Proposed file structure
         # NOTE:
         # Name every app python file as appname__automator.py
         # example: for gmail ---> gmail__automator.py
-        # only two files shown under google or ms for showing purpose,there will be more
+        # there will be more apps and app files with time, few are shown
         
 If anyone having better idea, let me know in Discussion
 
@@ -78,6 +78,5 @@ If you have any questions, suggestions, or require guidance regarding contributi
 
 * **<a href="https://github.com/rmondal-official/PINAK/discussions">GitHub Discussions</a>:** Engage in discussions within the repository's Discussions tab.
 * **<a href="https://github.com/rmondal-official/PINAK/issues">Issue Tracker</a>:** Raise issues or questions directly on the project's issue tracker.
-* **<a href="https://www.linkedin.com/in/rajesh-mondal-35078b2b5/">LinkedIn</a>**: Feel free to message me if you have any doubt regarding contributon to the project or any doubt on Contribution.md.
 
 We are excited to have you join the PINAC journey! Your contributions will play a vital role in shaping this project into a powerful tool for productivity and efficiency.
