@@ -1,126 +1,115 @@
 # importing
-from __init__ import create_service
-
 import os
 import base64
 import mimetypes
 from email.mime.multipart import MIMEMultipart
-from email.mime.audio import MIMEAudio
+from email.mime.text import MIMEText
+from email.mime.application import MIMEApplication
 from email.mime.base import MIMEBase
 from email.mime.image import MIMEImage
-from email.mime.text import MIMEText
+from email.mime.audio import MIMEAudio
+from __init__ import create_service
 
 
-class Gmail:
-
+class GmailManager:
+    """
+    Class for interacting with Gmail API to create and send emails.
+    """
+    
     def __init__(self):
-        self.sender_email = "your@gmail.com"
+        """
+        Initializes the Gmail object with the sender's email address.
+
+        Args:
+            sender_email (str): The email address of the sender.
+        """
+        self.sender_email = 'me'
         try:
-            self.service = create_service('gmail', 'v1')
-        except:
-            print("Oops..\nSomething went wrong")
+            self.service = create_service('gmail', 'v1')  # Connect to Gmail API
+        except Exception as e:
+            print(f"Error initializing Gmail service: {e}")  # Provide specific error message
+
 
     #  (PART 1)---> FOR CREATING AND SENDING EMAILS
 
-    # for creating msg without attachment
-    def create_message(self, receiver_email: str, subject: str, email_body: str):
+    
+    def create_message(self, recipient_email, subject, body, attachment=None):
+        """
+        Creates a MIME message for sending emails.
 
-        # Create a multipart message
-        message = MIMEMultipart('alternative')
+        Args:
+            recipient_email (str): Email address of the recipient.
+            subject (str): Subject line of the email.
+            body (str): Plain text body of the email.
+            attachment (str, optional): Path to an attachment file. Defaults to None.
 
-        # Set the sender, receiver, and subject of the message
-        message['from'] = self.sender_email
-        message['to'] = receiver_email
-        message['subject'] = subject
-
-        # Attach the email body as plain text to the message
-        message.attach(MIMEText(email_body, 'plain'))
-        # Return the raw message in dictionary format
-        return {'raw': base64.urlsafe_b64encode(message.as_string().encode('utf-8')).decode()}
-
-    # for creating msg with attachment
-    def create_message_with_attachment(self, receiver_email: str, subject: str, email_body: str, file: str):
-
-        # Create a MIMEMultipart message object.
+        Returns:
+            str: The MIME message as a string, ready to be sent.
+        """
         message = MIMEMultipart()
+        message['From'] = self.sender_email
+        message['To'] = recipient_email
+        message['Subject'] = subject
+    
+        text_part = MIMEText(body, 'plain')
+        message.attach(text_part)
+    
+        if attachment:
+            with open(attachment, 'rb') as f:
+                content = f.read()
+            filename = os.path.basename(attachment)
+            content_type = os.path.splitext(attachment)[1]
+            attachment_part = MIMEApplication(content, content_type)
+            attachment_part.add_header('Content-Disposition', 'attachment; filename={}'.format(filename))
+            message.attach(attachment_part)
+        return message.as_string()
 
-        # Set the recipient email, sender email and subject fields of the message.
-        message['to'] = receiver_email
-        message['from'] = self.sender_email
+    
+    def create_draft(self, body, recipient_email=None, subject=None, attachment=None):
+        """
+        Creates a draft message in Gmail.
+
+        Args:
+            to_address: Email address of the recipient.
+            subject: Subject of the email.
+            body: Body of the email.
+            attachment_path: Path to the attachment file (optional).
+
+        Returns:
+            A dictionary containing the draft information.
+        """
+        message = MIMEMultipart()
+        message['to'] = recipient_email
         message['subject'] = subject
 
-        # Create a MIMEText object and attach it to the message.
-        msg = MIMEText(email_body)
-        message.attach(msg)
+        text_part = MIMEText(body)
+        message.attach(text_part)
 
-        # Guess the content type of the file to be attached.
-        content_type, encoding = mimetypes.guess_type(file)
+        if attachment:
+            with open(attachment, 'rb') as f:
+                content = f.read()
+            filename = os.path.basename(attachment)
+            content_type = os.path.splitext(attachment)[1]
+            attachment_part = MIMEApplication(content, content_type)
+            attachment_part.add_header('Content-Disposition', 'attachment; filename={}'.format(filename))
+            message.attach(attachment_part)
 
-        # If the content type is not known or the file is encoded, set the content type to 'application/octet-stream'.
-        main_type, sub_type = None, None
-        if content_type is None or encoding is not None:
-            content_type = 'application/octet-stream'
-            main_type, sub_type = content_type.split('/', 1)
+        encoded_message = base64.urlsafe_b64encode(message.as_string().encode('utf-8')).decode()
+        draft = self.service.users().drafts().create(userId='me', body={'message': {'raw': encoded_message}}).execute()
+        return draft
 
-        # Depending on the content type, create the appropriate MIME object and attach it to the message.
-        if main_type == 'text':
-            fp = open(file, 'rb')
-            msg = MIMEText(fp.read().decode("utf-8"), _subtype=sub_type)
-            fp.close()
-
-        elif main_type == 'image':
-            fp = open(file, 'rb')
-            msg = MIMEImage(fp.read(), _subtype=sub_type)
-            fp.close()
-
-        elif main_type == 'audio':
-            fp = open(file, 'rb')
-            msg = MIMEAudio(fp.read(), _subtype=sub_type)
-            fp.close()
-
-        else:
-            fp = open(file, 'rb')
-            msg = MIMEBase(main_type, sub_type)
-            msg.set_payload(fp.read())
-            fp.close()
-
-        # Set the filename and content disposition of the attachment.
-        filename = os.path.basename(file)
-        msg.add_header('Content-Disposition', 'attachment', filename=filename)
-
-        # Attach the MIME object to the message.
-        message.attach(msg)
-
-        # Encode the message in base64 and return the raw message in a dictionary.
-        raw_message = base64.urlsafe_b64encode(message.as_string().encode("utf-8"))
-        return {'raw': raw_message.decode("utf-8")}
-
-    # for creating draft
-    def create_draft(self, email_body: str):
-        try:
-            # Create message object
-            message = {'message': email_body}
-
-            # Create draft message
-            draft = self.service.users().drafts().create(userId=self.sender_email, body=message).execute()
-            # Print draft information
-            print("Draft id: %s\nDraft message: %s" % (draft['id'], draft['message']))
-            # Return draft message
-            return draft
-
-        except:
-            # Handle exception
-            print("Sir, something went wrong.")
-            return None
 
     # for sending email with above created msg
-    def send_message(self, message):
+    def send_email(self, recipient_email, subject, body, attachment=None):
         try:
-            message = self.service.users().messages().send(userId=self.sender_email, body=message).execute()
-            return message
-        except:
-            # In case of an error, return None.
-            print("Sir, something went wrong.")
-            return None
+            message = self.create_message(recipient_email=recipient_email, subject=subject, body=body, attachment=attachment)
+            message_encoded = base64.urlsafe_b64encode(message.encode('utf-8')).decode('utf-8')
+            self.service.users().messages().send(userId='me', body={'raw': message_encoded}).execute()
+            return True
+        
+        except Exception as e:
+            print(f"Error initializing Gmail service: {e}") 
+            return False
+
 
     #  (PART 2)---> FOR FETCHING EMAILS AND EMAILS DATA
