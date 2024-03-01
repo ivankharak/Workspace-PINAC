@@ -1,5 +1,6 @@
+# importing
 import json
-from __init__ import create_service  # Assuming this is defined elsewhere
+from __init__ import create_service
 
 
 class ContactManager:
@@ -14,14 +15,12 @@ class ContactManager:
         Raises:
             Exception: If an error occurs during Google People API service creation.
         """
-
-        self.contact_template_path = "create_contact__template.txt"
         try:
             self.service = create_service("people", "v1")
         except Exception as e:
-            raise Exception("Error creating Google People API service:", e)
+            return e
 
-    def get_phone_number(self, query):
+    def give_phone_number(self, query):
         """
         Searches contacts for a given query and returns the phone number associated with the first match.
 
@@ -33,8 +32,7 @@ class ContactManager:
         """
 
         request = self.service.people().searchContacts(
-            pageSize=10, query=query, readMask="names,phoneNumbers"
-        ).execute()
+            pageSize=10, query=query, readMask="names,phoneNumbers").execute()
         results = request.get("results", [])
 
         if len(results) == 1:
@@ -51,7 +49,7 @@ class ContactManager:
             return contact_list
         return None
 
-    def get_email_address(self, query):
+    def give_email_address(self, query):
         """
         Searches contacts for a given query and returns the email address associated with the first match.
 
@@ -110,8 +108,8 @@ class ContactManager:
         """
 
         if "first_name" not in kwargs or "phone_number" not in kwargs:
-            print("Error: Both first_name and phone_number are required.")
-            return False
+            e = "Both first_name and phone_number are required"
+            return e
         
         else:
             data = {
@@ -158,6 +156,5 @@ class ContactManager:
             final_data = json.loads(processed_data)
             # print(final_data)
             self.service.people().createContact(body=final_data).execute()  # saving it to google with people API
-            print("Contact saved successfully")
             return True
 

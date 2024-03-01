@@ -27,11 +27,10 @@ class GmailManager:
         try:
             self.service = create_service('gmail', 'v1')  # Connect to Gmail API
         except Exception as e:
-            print(f"Error initializing Gmail service: {e}")  # Provide specific error message
+            return e  # Provide specific error message
 
 
     #  (PART 1)---> FOR CREATING AND SENDING EMAILS
-
     
     def create_message(self, recipient_email, subject, body, attachment=None):
         """
@@ -108,8 +107,7 @@ class GmailManager:
             return True
         
         except Exception as e:
-            print(f"Error initializing Gmail service: {e}") 
-            return False
+            return e
 
 
     #  (PART 2)---> FOR FETCHING EMAILS AND EMAILS DATA

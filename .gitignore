@@ -1,4 +1,5 @@
 .env
+.vscode
 google_apps/__pycache__/
 app_configs/
 google_apps/testing_field.py
