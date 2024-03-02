@@ -1,5 +1,5 @@
 
-<img src="https://github.com/rmondal-official/PINAC/blob/main/Readme%20Assets/PINAC_template%202.png" style="max-width: 100%;" alt="PINAC banner">
+<img src="https://github.com/rmondal-official/PINAC/blob/main/assets/PINAC_template%202.png" style="max-width: 100%;" alt="PINAC banner">
 
 
 <div align="middle">
