@@ -18,30 +18,30 @@ PINAC Intelligent System automates tasks in Google Apps, Microsoft Apps, Meta Ap
 
 
 <h1 align="middle">📁 Project File Structure</h1>
-Project file structure ✨  
+
 
         .
-        ├── ai_models/                          # folder houses code for interacting with AI models
+        ├── ai_models/               # code AI models
         │   ├── chatgpt/
         │   ├── gemini/
-        │   └── model_utils.py                  # Common utilities for all AI models
-        ├── app_configs/                        # stores API keys and credentials 
-        │   ├── google.json, etc
-        ├── apps/                               # folder contains app-wise specific folders
-        │   ├── google/
-        │   │   ├── __init__.py
-        │   │   ├── gmail.py
-        │   │   └── drive.py
-        │   ├── microsoft/..
-        │   ├── meta/..
-        |   └── utils.py                       # Common utility functions (if required)
+        │   └── model_utils.py       # Common utilities of AI models
+        ├── configs/                 # for API keys & credentials 
+        ├── apps/                    # contains parent-app-wise folders
+        │   ├── google/              # google app-wise .py files
+        │   ├── microsoft/           # ms app-wise .py files
+        │   ├── meta/                # meta app-wise .py files
+        |   └── utils.py             # Common utility functions
         ├── common/
         │   ├── __init__.py
-        │   ├── GUI /..
-        │   ├── error_handling.py
-        │   └── utils.py
-        ├── main.py                           # scripts that run our application
-        └── requirements.txt
+        │   └── UI/                  # GUI files
+        ├── main.py                  # final scripts
+        ├── requirements.txt
+        |
+        ├── assets/                  # Readme file assets
+        ├── .gitignore
+        ├── LICENSE
+        ├── CONTRIBUTING.md
+        └── README.md
 
 If anyone having better idea, let me know in Discussion
 
