@@ -15,7 +15,7 @@ Welcome to PINAC Intelligent System - versatile AI companion designed to streaml
 * **Google Contact Integration:** Easily search for and add contacts to your Google Account.
 * **Gmail Integration:** Sending emails and creating drafts now made even simpler, with or without attachments.
 * **Google Calendar Integration:** Stay on top of your day with a quick look at today's or upcoming events in your Google Calendar. Enjoy the seamless integration!
-8 **Find Holidays:** Now you can find your upcoming holidays(country-wise) using google calender APIs.
+* **Find Holidays:** Now you can find your upcoming holidays(country-wise) using google calender APIs.
 
 
 <h1 align="middle">📁 Project File Structure</h1>
