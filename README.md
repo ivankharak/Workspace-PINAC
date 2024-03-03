@@ -3,7 +3,7 @@
 
 
 <div align="middle">
-PINAC Intelligent System automates tasks in Google Apps, Microsoft Apps, Meta Apps, and more using APIs. It integrates AI for writing emails, notes, documents, and presentations. PINAC envisions tech enhancing workflows to save time and cognitive resources.
+Welcome to PINAC Intelligent System - versatile AI companion designed to streamline your daily digital interactions across various platforms. This intelligent system is crafted to automate tasks within Google Apps, Microsoft Apps, Meta Apps and many more, offering a seamless integration that enhances productivity and simplifies your day-to-day activities. It integrates AI capabilities for chatting, writing emails, notes, documents, pdf summery, various assistance, etc. PINAC envisions tech enhancing workflows to save time and cognitive resources.
 </div>
 <div align="middle"> 
 <b>It's currently in early development phase. Your contributions shape PINAC's growth towards its full potential.</b>
@@ -15,6 +15,7 @@ PINAC Intelligent System automates tasks in Google Apps, Microsoft Apps, Meta Ap
 * **Google Contact Integration:** Easily search for and add contacts to your Google Account.
 * **Gmail Integration:** Sending emails and creating drafts now made even simpler, with or without attachments.
 * **Google Calendar Integration:** Stay on top of your day with a quick look at today's or upcoming events in your Google Calendar. Enjoy the seamless integration!
+8 **Find Holidays:** Now you can find your upcoming holidays(country-wise) using google calender APIs.
 
 
 <h1 align="middle">📁 Project File Structure</h1>

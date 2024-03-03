@@ -3,7 +3,7 @@ import json
 from __init__ import create_service
 
 
-class ContactManager:
+class GoogleContactManager:
     """
     Manages contacts using Google People API and provides user-friendly functions.
     """

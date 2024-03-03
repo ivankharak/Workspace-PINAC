@@ -11,7 +11,7 @@ from email.mime.audio import MIMEAudio
 from __init__ import create_service
 
 
-class GmailManager:
+class GoogleGmailManager:
     """
     Class for interacting with Gmail API to create and send emails.
     """
@@ -100,6 +100,18 @@ class GmailManager:
 
     # for sending email with above created msg
     def send_email(self, recipient_email, subject, body, attachment=None):
+        """
+        Send an email with optional attachment to the specified recipient email address.
+
+        Args:
+            recipient_email (str): The email address of the recipient.
+            subject (str): The subject of the email.
+            body (str): The body of the email.
+            attachment (str, optional): The file path of the attachment, if any. Defaults to None.
+
+        Returns:
+            bool or Exception: True if the email was sent successfully, otherwise an Exception object.
+        """
         try:
             message = self.create_message(recipient_email=recipient_email, subject=subject, body=body, attachment=attachment)
             message_encoded = base64.urlsafe_b64encode(message.encode('utf-8')).decode('utf-8')
