@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>PINAC</title>
+        <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+        <header>
+                <div class="header-content">
+                        <h1 id="project-title">PINAC</h1>
+                        <nav>
+                                <ul>
+                                        <li id="user-name">User name</li>
+                                        <li><button class="login header-nav-button"><img class="user-icon"
+                                                                src="img/user_icon.png" alt=""></button></li>
+                                </ul>
+                        </nav>
+                </div>
+        </header>
+
+        <main>
+                <div id="chat-box">
+                        <p class="welcome-text">
+                                Hello,<br>
+                                How can I help you ?
+                        </p>
+                        <!-- Chat messages will be added here -->
+                </div>
+                <div class="message-form">
+                        <form>
+                                <input type="text" id="message-input" placeholder="Ask me anything...">
+
+                                <button type="button" id="send-button" onclick="give_response()">Send</button>
+
+                        </form>
+                </div>
+        </main>
+        <script type="text/javascript" src="../eel.js"></script>
+        <script src="script.js"></script>
+        
+</body>
+
+</html>

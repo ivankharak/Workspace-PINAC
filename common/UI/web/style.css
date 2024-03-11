@@ -1,0 +1,184 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+@font-face {
+    font-family: nasa;
+    src: url(font/nasalization-rg.otf);
+}
+
+@font-face {
+    font-family: yatra-one;
+    src: url(font/YatraOne-Regular.ttf);
+}
+
+@font-face {
+    font-family: ai-text;
+    src: url(font/KodeMono-VariableFont_wght.ttf);
+}
+
+@font-face {
+    font-family: teko;
+    src: url(font/Teko-Light.ttf);
+}
+
+
+/* header part  */
+
+header {
+    height: 10vh;
+
+    display: flex;
+    flex-direction: column;
+    background-color: #0c0a18;
+}
+
+.header-content {
+    height: 8vh;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+
+    margin-left: 1vw;
+    margin-right: 1vw;
+
+    padding-left: 3vw;
+    padding-right: 1.5vw;
+
+    border-radius: 7px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #0c0a18;
+}
+
+#project-title {
+    font-size: 5vh;
+    color: #ece2d5;
+    font-family: nasa;
+}
+
+li {
+    display: inline;
+    list-style-type: none;
+}
+
+#user-name {
+    font-family: teko;
+    color: #ece2d5;
+    font-size: 3vh;
+    padding-right: 1vw;
+}
+
+.user-icon {
+    height: 6vh
+}
+
+.header-nav-button {
+    background-color: #0c0a18;
+    border-width: 0;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+
+}
+
+/* main body */
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 90vh;
+    width: 100vw;
+    background-color: #0c0a18;
+}
+
+#chat-box {
+    height: 70vh;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+
+    width: 80vw;
+    padding-top: 5vh ;
+    /* padding-left: 10.9vw; */
+
+    border-radius: 7px;
+    border: 0;
+    color: #ece2d5;
+    background-color: #0c0a18;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
+.welcome-text {
+    background-image: linear-gradient(90deg, rgb(224, 60, 115), blue);
+    background-clip: text;
+    color: transparent;
+    font-size: 8vh;
+    font-weight: bold;
+    font-family: nasa;
+    padding-left: 10.9vw;
+}
+
+
+.message-form {
+    height: 8vh;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+
+    width: 98vw;
+    padding-left: 1vw;
+    padding-right: 1vw;
+
+    border: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+}
+
+#message-input {
+    width: 50vw;
+    padding-left: 1vw;
+    padding-right: 1vw;
+
+    margin-right: 0.5vw;
+
+    height: 6vh;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+
+    border: 0;
+    border-radius: 7px;
+    background-color:#2b333b;
+    color: #ece2d5;
+    font-size: 1.3vw;
+}
+#message-input::placeholder {
+    font-family: ai-text;
+    color: #ece2d5;
+}
+
+#send-button {
+    height: 8vh;
+
+    width: 5vw;
+    margin-left: 0.5vw;
+
+    border: 0;
+    border-radius: 7px;
+    background-color: #ece2d5;
+    font-family: ai-text;
+    font-weight: bold;
+    flex: 1;
+    z-index: 1;
+    /* cursor: pointer; */
+}
+
+#send-button:hover {
+    background-color: #444;
+}
