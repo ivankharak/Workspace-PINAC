@@ -10,7 +10,6 @@ function give_response() {
 		document.querySelector("#chat-box").innerHTML += "<b>You:</b> " + messageInput.value + "<br><br>"
 
 		eel.ask(messageInput.value)(function (response) {
-			document.querySelector("#chat-box").style.fontFamily = "ai-text";
 			document.querySelector("#chat-box").innerHTML += "<b>PINAC:</b> " + response + "<br><br><br><br>"
 		})
 	}

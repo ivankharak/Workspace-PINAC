@@ -108,6 +108,7 @@ main {
     border-radius: 7px;
     border: 0;
     color: #ece2d5;
+    font-family: ai-text;
     background-color: #0c0a18;
     overflow-y: scroll;
     scrollbar-width: none;
