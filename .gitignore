@@ -1,5 +1,5 @@
 .env
 .vscode
 configs/
-apps/google/__pycache__
-apps/google/testing_field.py
+__pycache__
+testing_field.py

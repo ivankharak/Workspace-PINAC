@@ -1,17 +1,16 @@
+import os
+import sys
 import eel
-import g4f
 
+module_path = os.path.abspath("my_module.py")
+sys.path.append(os.path.dirname("ai_models/models"))
+import models
 
 eel.init('common/UI/web')
 
 @eel.expose
 def ask(query):
-    response =  g4f.ChatCompletion.create(
-        model=None,  # gpt-4-turbo, gpt-3.5-turbo, gemini
-        messages=[{"role": "user", "content": query}],
-        provider= g4f.Provider.DeepInfra
-        )
-    return response
+    return models.ask_gemini(query)
 
 
 eel.start('index.html')
