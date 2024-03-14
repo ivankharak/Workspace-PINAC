@@ -8,7 +8,7 @@ from email.mime.application import MIMEApplication
 from email.mime.base import MIMEBase
 from email.mime.image import MIMEImage
 from email.mime.audio import MIMEAudio
-from __init__ import create_service
+from apps.google.__init__ import create_service
 
 
 class GoogleGmailManager:
@@ -27,7 +27,7 @@ class GoogleGmailManager:
         try:
             self.service = create_service('gmail', 'v1')  # Connect to Gmail API
         except Exception as e:
-            return e  # Provide specific error message
+            print(e)  # Provide specific error message
 
 
     #  (PART 1)---> FOR CREATING AND SENDING EMAILS
