@@ -60,18 +60,6 @@ header {
     font-family: nasa;
 }
 
-li {
-    display: inline;
-    list-style-type: none;
-}
-
-#user-name {
-    font-family: teko;
-    color: #ece2d5;
-    font-size: 3vh;
-    padding-right: 1vw;
-}
-
 .user-icon {
     height: 6vh
 }
@@ -97,18 +85,16 @@ main {
 }
 
 #chat-box {
-    height: 70vh;
+    height: 77%;
     margin-top: 1vh;
     margin-bottom: 1vh;
 
-    width: 80vw;
-    padding-top: 5vh ;
-    /* padding-left: 10.9vw; */
+    width: 80%;
+    padding-top: 5vh;
 
     border-radius: 7px;
     border: 0;
     color: #ece2d5;
-    font-family: ai-text;
     background-color: #0c0a18;
     overflow-y: scroll;
     scrollbar-width: none;
@@ -118,66 +104,92 @@ main {
     background-image: linear-gradient(90deg, rgb(224, 60, 115), blue);
     background-clip: text;
     color: transparent;
-    font-size: 8vh;
+    font-size: 10vh;
     font-weight: bold;
     font-family: nasa;
-    padding-left: 10.9vw;
+    padding: 10px;
+    margin: 20px;
 }
 
+/* Chat Container  */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 0;
+    border-radius: 7px;
+    padding: 10px;
+    margin: 20px;
+}
+
+.user {
+    display: inline-flex;
+    flex-direction: row;
+    background-color: #251286;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.ai {
+    display: flex;
+    flex-direction: row;
+    background-color: transparent;
+    font-family: ai-text;
+}
+.user-ai-icon {
+    display: inline;
+    align-items: center;
+    margin-right: 20px;
+    height: 5vh;
+    /* width: 4vh; */
+}
+
+
+/* Input Box  */
 
 .message-form {
     height: 8vh;
     margin-top: 1vh;
-    margin-bottom: 1vh;
 
-    width: 98vw;
-    padding-left: 1vw;
-    padding-right: 1vw;
+    width: 100%;
 
-    border: 0;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-
 }
 
 #message-input {
-    width: 50vw;
+    width: 70%;
     padding-left: 1vw;
     padding-right: 1vw;
+    margin-right: 1vw;
 
-    margin-right: 0.5vw;
-
-    height: 6vh;
+    height: 80%;
     padding-top: 1vh;
     padding-bottom: 1vh;
 
     border: 0;
-    border-radius: 7px;
-    background-color:#2b333b;
+    border-radius: 10px;
+    background-color: #2b333b;
     color: #ece2d5;
     font-size: 1.3vw;
 }
+
 #message-input::placeholder {
     font-family: ai-text;
+    font-size: medium;
     color: #ece2d5;
 }
 
 #send-button {
-    height: 8vh;
-
+    height: 100%;
     width: 5vw;
-    margin-left: 0.5vw;
 
     border: 0;
     border-radius: 7px;
     background-color: #ece2d5;
     font-family: ai-text;
     font-weight: bold;
-    flex: 1;
-    z-index: 1;
-    /* cursor: pointer; */
 }
 
 #send-button:hover {

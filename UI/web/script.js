@@ -3,16 +3,24 @@ const messageForm = document.getElementsByClassName('message-form');
 const messageInput = document.getElementById('message-input');
 
 
+function show_user_query(query) {
+
+	document.querySelector("#chat-box").innerHTML += '<li class="container user"><img class="user-ai-icon" src="img/user_icon_2.png" alt="">' + query + '<br></li>'
+}
+
+function show_ai_ans(ans) {
+
+	document.querySelector("#chat-box").innerHTML += '<li class="container ai"><img class="user-ai-icon" src="img/pinac_logo.png" alt="">' + ans + '<br></li>'
+}
+
 
 function give_response() {
 
 	if (messageInput.value != 0) {
-		document.querySelector("#chat-box").innerHTML += "<b>You:</b> " + messageInput.value + "<br><br>"
+		show_user_query(messageInput.value)
 
 		eel.give_response(messageInput.value)(function (response) {
-			document.querySelector("#chat-box").innerHTML += response[0] + "<br><br>"
-			document.querySelector("#chat-box").innerHTML += response[1] + "<br><br>"
-			document.querySelector("#chat-box").innerHTML += "Creating draft email...<br>Draft email created: " + response[2] + "<br><br><br><br>"
+			show_ai_ans(response)
 		})
 	}
 	messageInput.value = "";
