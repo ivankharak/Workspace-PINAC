@@ -1,3 +1,7 @@
+----------------------------------------------------------------------------
+> 🚨 **Note:** _The biggest Update of this project is coming very soon..._
+----------------------------------------------------------------------------
+
 <img src="https://github.com/rmondal-official/PINAC/blob/main/readme_assets/pinac-title.png" alt="">
 
 <br>
