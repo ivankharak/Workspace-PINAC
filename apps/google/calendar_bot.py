@@ -47,10 +47,10 @@ class GoogleCalendarManager:
         if not events:
             return None
         
-        event_list = {}
+        event_list = []
         for event in events:
             start = event['start'].get('dateTime', event['start'].get('date'))
-            event_list[str(event["id"])] = [start, event["summary"]]
+            event_list.append([str(event["id"]), start, event["summary"]])
         return event_list
 
 
@@ -76,10 +76,10 @@ class GoogleCalendarManager:
         if not events:
             return None
         
-        event_list = {}
+        event_list = []
         for event in events:
             start = event['start'].get('dateTime', event['start'].get('date'))
-            event_list[str(event["id"])] = [start, event["summary"]]
+            event_list.append([str(event["id"]), start, event["summary"]])
 
         return event_list
         
