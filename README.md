@@ -9,19 +9,19 @@ Introducing <b>PINAC Intelligent System</b> - your ultimate <b>AI</b> companion!
 
 # Present Features 🎯  
 
-* **Gmail Integration:** Sending emails and creating drafts now made even simpler, just ask AI to do it ! Provide necessary details and AI will create email draft for you.
+* **Gmail Integration:** Sending emails and creating drafts are now made even simpler, just ask AI to do it! Provide the necessary details and AI will create an email draft for you.
 * **Google Calendar Integration:** Stay on top of your day with a quick look at today's or upcoming events in your Google Calendar. Enjoy the seamless integration!
 * **Having Query ?** Just ask AI ! AI will give you your answer.
-* **GUI Interface:** We now have a beautiful GUI interface for chatting with AI and asking your queries to get answers !
+* **GUI Interface:** We now have a beautiful GUI interface for chatting with AI and asking your queries to get answers!
 <img src="https://github.com/rmondal-official/PINAC/blob/main/readme_assets/App_screenshot.jpg" alt="app screenshot">
 
 
 # Upcoming Features 💡
 
 * **Google Task & Google Drive** integration is on the way !
-* With upcoming updates we are going to improve our GUI interface much more and adding new features for better efficiency ✨
-*  **Tired of searching on Internet ?** Web searching feature on PINAC will be available very soon.
-*  Fixing bugs with every new updates
+* With upcoming updates we are going to improve our GUI interface much more and add new features for better efficiency ✨
+*  **Tired of searching on the Internet?** The Web searching feature on PINAC will be available very soon.
+*  Fixing bugs with every new update
 
 
 # File Structure 📁
@@ -32,7 +32,7 @@ Introducing <b>PINAC Intelligent System</b> - your ultimate <b>AI</b> companion!
         │   ├── model_utils.py
         │   ├── training_data.py
         │   └── memory.txt 
-        ├── configs/                 # for API keys & credentials 
+        ├── configs/                 # for API keys & Credentials 
         ├── apps/                    # contains parent-app-wise folders
         │   ├── google/              # google app-wise .py files
         │   ├── microsoft/           # ms app-wise .py files
@@ -57,7 +57,7 @@ Introducing <b>PINAC Intelligent System</b> - your ultimate <b>AI</b> companion!
 
 1. Star the Repository
 2. Clone the repository `https://github.com/rmondal-official/PINAC.git`
-3. Enable google api with required scopes (Follow the instruction on <a herf="https://github.com/rmondal-official/PINAC/blob/main/Google%20API%20Guide.md">Google API Guide</a>)
+3. Enable Google API with required scopes (Follow the instructions on <a href="https://github.com/rmondal-official/PINAC/blob/main/Google%20API%20Guide.md">Google API Guide </a>)
 
 4. Navigate to the project directory `cd PINAC`  
 5. Run main.py `python main.py`
@@ -71,7 +71,7 @@ _Please read <a href="https://github.com/rmondal-official/PINAK/blob/main/CONTRI
 
 # Contact
 
-If you have any questions, suggestions, or require guidance regarding contribution, feel free to reach out through the following channels:
+If you have any questions or suggestions or require guidance regarding contribution, feel free to reach out through the following channels:
 
 * **<a href="https://github.com/rmondal-official/PINAK/discussions">GitHub Discussions</a>:** Engage in discussions within the repository's Discussions tab.
 * **<a href="https://github.com/rmondal-official/PINAK/issues">Issue Tracker</a>:** Raise issues or questions directly on the project's issue tracker.
