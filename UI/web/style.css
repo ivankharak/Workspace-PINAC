@@ -97,7 +97,7 @@ main {
     color: #ece2d5;
     background-color: #0c0a18;
     overflow-y: scroll;
-    scrollbar-width: none;
+    /* scrollbar-width: none; */
 }
 
 .welcome-text {
@@ -172,7 +172,7 @@ main {
     border-radius: 10px;
     background-color: #2b333b;
     color: #ece2d5;
-    font-size: 1.3vw;
+    font-size: medium;
 }
 
 #message-input::placeholder {

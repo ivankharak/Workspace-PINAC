@@ -74,6 +74,7 @@ def give_response(query):
         response = draft_response.replace("\n", "<br>")
         response = f"Sure, here are your's upcoming events for today: <br><br>{response}"
 
+    response = response.replace("\n", "<br>")
     return response
 
 eel.start('index.html')
