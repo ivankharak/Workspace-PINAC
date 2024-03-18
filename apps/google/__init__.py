@@ -15,8 +15,8 @@ from googleapiclient.discovery import build
 def create_service(build_name, version):
 
     # If modifying these scopes, delete the file google_token.json.']
-    scopes = ['https://www.googleapis.com/auth/contacts', 'https://mail.google.com/',
-            'https://www.googleapis.com/auth/calendar', 'https://www.googleapis.com/auth/tasks']
+    scopes = ['openid', 'https://www.googleapis.com/auth/contacts', 'https://www.googleapis.com/auth/gmail.modify',
+            'https://www.googleapis.com/auth/calendar', 'https://www.googleapis.com/auth/tasks', 'https://www.googleapis.com/auth/drive']
     try:
         creds = None
         # The file google_token.json stores the user's access and refresh tokens, and is
