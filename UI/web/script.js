@@ -1,16 +1,23 @@
 
 const messageForm = document.getElementsByClassName('message-form');
 const messageInput = document.getElementById('message-input');
+const sendButton = document.getElementById('send-button')
 
+
+messageInput.addEventListener('keydown', function(event) {
+	if (event.key === 'Enter') {
+		sendButton.click()
+	}
+})
 
 function show_user_query(query) {
 
-	document.querySelector("#chat-box").innerHTML += '<li class="container user"><img class="user-ai-icon" src="img/user_icon_2.png" alt="">' + query + '<br></li>'
+	document.querySelector("#chat-box").innerHTML += '<div class="container"><img id="user-icon" src="img/user_icon_2.png" alt=""><p class="text-container user">' + query + '<br></p></div>'
 }
 
 function show_ai_ans(ans) {
 
-	document.querySelector("#chat-box").innerHTML += '<li class="container ai"><img class="user-ai-icon" src="img/pinac_logo.png" alt="">' + ans + '<br></li>'
+	document.querySelector("#chat-box").innerHTML += '<div class="container"><img id="ai-icon" src="img/pinac_logo.png" alt=""><p class="text-container ai">' + ans + '<br><br><br></p></div>'
 }
 
 
@@ -20,7 +27,7 @@ function give_response() {
 		show_user_query(messageInput.value)
 
 		eel.give_response(messageInput.value)(function (response) {
-			show_ai_ans(response)
+			show_ai_ans(response);
 		})
 	}
 	messageInput.value = "";

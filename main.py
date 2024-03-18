@@ -1,5 +1,5 @@
 import eel
-import datetime
+from functools import cache
 import dateutil.parser
 from ai_models import models
 from apps.google.gmail_bot import GoogleGmailManager
@@ -9,7 +9,7 @@ from apps.google.calendar_bot import GoogleCalendarManager
 
 eel.init('UI/web')
 
-
+@cache
 def get_subject_body(text):
     
     lines = text.split('\n')
@@ -22,6 +22,7 @@ def get_subject_body(text):
     return body, sub
 
 
+@cache
 def formate_datetime(time_str: str):
     dt = dateutil.parser.parse(time_str)
     normal_datetime  = dt.strptime(time_str, "%Y-%m-%dT%H:%M:%S%z")
@@ -29,10 +30,9 @@ def formate_datetime(time_str: str):
 
 
 @eel.expose
+@cache
 def give_response(query):
-    
     response = models.ask_me(query)
-    print(response)
 
     if "task is sending email" in response:
         body, subject = get_subject_body(response)

@@ -29,7 +29,17 @@ tr_data = [
         {"role": "assistant", "content": "task is sending email\n\nSubject: Exciting News: I've Got Promotion!\n\nDear Family Members,\n\nI wanted to share some exciting news with you all. I am thrilled to announce that I have been offered a new job position as [Job Title] at [Company Name]. I am so grateful for this opportunity and I couldn't be happier to start this new chapter in my career.\n\nI will be starting in my new role on [Start Date] and I am looking forward to the new challenges and opportunities that lie ahead. I am confident that this new position will help me to grow both personally and professionally.\n\nI wanted to take a moment to thank you all for your constant support and encouragement throughout my career. I couldn't have done it without you.\n\nI would love to celebrate this moment with all of you and would be glad if you could join me in my celebration.\n\nBest,\n[Your Name]\n[Your Email]\n[Your Phone Number]\n\nNote:\n* [Job Title]: The title of the job you got promoted\n* [Company Name]: The name of the company\n* [Start Date]: The date you are starting the new job\n* [Your Name]: Your name\n* [Your Email]: Your email\n* [Your Phone Number]: Your phone number"},
      
         # Google Calendar: Upcoming events
-        {"role": "user", "content": "Ai tell me my upcoming event from g-calendar"},
+        {"role": "user", "content": "AI tell me my upcoming event from g-calendar"},
+        {"role": "assistant", "content": "task is fetching upcoming events from Google Calendar"},
+        {"role": "user", "content": "Give me upcoming event from google calendar"},
+        {"role": "assistant", "content": "task is fetching upcoming events from Google Calendar"},
+        {"role": "user", "content": "from google calendar, show me my upcoming event list"},
+        {"role": "assistant", "content": "task is fetching upcoming events from Google Calendar"},
+        {"role": "user", "content": "from google calendar, show event list"},
+        {"role": "assistant", "content": "task is fetching upcoming events from Google Calendar"},
+        {"role": "user", "content": "fetch and show my gcalendar events immediately"},
+        {"role": "assistant", "content": "task is fetching upcoming events from Google Calendar"},
+        {"role": "user", "content": "please display gcalendar events"},
         {"role": "assistant", "content": "task is fetching upcoming events from Google Calendar"},
         ### with amount
         {"role": "user", "content": "Give me 10 upcoming event from google calendar"},
@@ -42,15 +52,29 @@ tr_data = [
         {"role": "assistant", "content": "task is fetching today's events from Google Calendar"},
         {"role": "user", "content": "fetch the today's event from google calendar for me please"},
         {"role": "assistant", "content": "task is fetching today's events from Google Calendar"},
+        {"role": "user", "content": "gcalendar show me my today's event list please"},
+        {"role": "assistant", "content": "task is fetching today's events from Google Calendar"},
 
         # Calendar: Upcoming events for all available calenders
-        {"role": "user", "content": "Give me my upcoming event from calendar"},
+        {"role": "user", "content": "Give my upcoming event from calendar"},
+        {"role": "assistant", "content": "task is fetching upcoming events from all available Calendars"},
+        {"role": "user", "content": "Give me my events"},
+        {"role": "assistant", "content": "task is fetching upcoming events from all available Calendars"},
+        {"role": "user", "content": "tell me upcoming event from calendar"},
+        {"role": "assistant", "content": "task is fetching upcoming events from all available Calendars"},
+        {"role": "user", "content": "Give me my upcoming events"},
+        {"role": "assistant", "content": "task is fetching upcoming events from all available Calendars"},
+        {"role": "user", "content": "hey! from calendar, show me my upcoming event list with all details"},
+        {"role": "assistant", "content": "task is fetching upcoming events from all available Calendars"},
+        {"role": "user", "content": "please from calendar, show me my events with all details"},
         {"role": "assistant", "content": "task is fetching upcoming events from all available Calendars"},
 
         # Calendar: Today's events for all available calenders
         {"role": "user", "content": "AI tell me my today's event from calendar"},
         {"role": "assistant", "content": "task is fetching today's events from all available Calendars"},
         {"role": "user", "content": "fetch the today's event from calendar for me please"},
+        {"role": "assistant", "content": "task is fetching today's events from all available Calendars"},
+        {"role": "user", "content": "from calendar show my todays event"},
         {"role": "assistant", "content": "task is fetching today's events from all available Calendars"},
 
         # Contact (for now)

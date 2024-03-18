@@ -89,7 +89,7 @@ main {
     margin-top: 1vh;
     margin-bottom: 1vh;
 
-    width: 80%;
+    width: 100%;
     padding-top: 5vh;
 
     border-radius: 7px;
@@ -107,42 +107,50 @@ main {
     font-size: 10vh;
     font-weight: bold;
     font-family: nasa;
-    padding: 10px;
+    padding-left: 10vw;
     margin: 20px;
 }
 
 /* Chat Container  */
 .container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    align-items: start;
+    margin-left: 10vw;
+    margin-right: 10vw;
+}
+
+.text-container {
+    display: inline;
     border: 0;
     border-radius: 7px;
-    padding: 10px;
-    margin: 20px;
+    padding: 20px;
 }
 
 .user {
-    display: inline-flex;
-    flex-direction: row;
+    display: inline;
     background-color: #251286;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .ai {
-    display: flex;
-    flex-direction: row;
+    display: inline;
     background-color: transparent;
     font-family: ai-text;
 }
-.user-ai-icon {
+
+#user-icon {
     display: inline;
-    align-items: center;
-    margin-right: 20px;
-    height: 5vh;
-    /* width: 4vh; */
+    padding: 10px;
+    height: 6vh;
 }
 
+#ai-icon {
+    display: inline;
+    padding: 10px;
+    padding-left: 6vw;
+    height: 6vh;
+}
 
 /* Input Box  */
 
