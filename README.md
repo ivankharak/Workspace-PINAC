@@ -1,4 +1,4 @@
-<img src="https://github.com/rmondal-official/PINAC/blob/main/readme_assets/readme_header.jpg" alt="">
+<img src="https://github.com/rmondal-official/PINAC/blob/main/readme_assets/readme_header.png" alt="">
 
 <br>
 
@@ -13,7 +13,7 @@ Introducing <b>PINAC Intelligent System</b> - your ultimate <b>AI</b> companion!
 * **Google Calendar Integration:** Stay on top of your day with a quick look at today's or upcoming events in your Google Calendar. Enjoy the seamless integration!
 * **Having Query ?** Just ask AI ! AI will give you your answer.
 * **GUI Interface:** We now have a beautiful GUI interface for chatting with AI and asking your queries to get answers!
-<img src="https://github.com/rmondal-official/PINAC/blob/main/readme_assets/App_screenshot.jpg" alt="app screenshot">
+<img src="https://github.com/rmondal-official/PINAC/blob/main/readme_assets/app_screenshot.jpg" alt="app screenshot">
 
 
 # Upcoming Features 💡
@@ -24,43 +24,24 @@ Introducing <b>PINAC Intelligent System</b> - your ultimate <b>AI</b> companion!
 *  Fixing bugs with every new update
 
 
-# File Structure 📁
-
-        .
-        ├── ai_models/               # AI models code
-        │   ├── model.py
-        │   ├── model_utils.py
-        │   ├── training_data.py
-        │   └── memory.txt 
-        ├── configs/                 # for API keys & Credentials 
-        ├── apps/                    # contains parent-app-wise folders
-        │   ├── google/              # google app-wise .py files
-        │   ├── microsoft/           # ms app-wise .py files
-        │   └── meta/                # meta app-wise .py files
-        ├── UI/                      # GUI App files
-        │   └── web/                 # Web files for GUI (Eel)
-        │       ├── index.html
-        │       ├── style.css      
-        │       └── script.js    
-        ├── main.py                  # final scripts
-        ├── requirements.txt
-        │
-        ├── readme_assets/
-        ├── .gitignore
-        ├── LICENSE
-        ├── CONTRIBUTING.md
-        ├── Google API Guide.md
-        └── README.md
-
-
 # Getting Started 🚀
 
 1. Star the Repository
-2. Clone the repository `https://github.com/rmondal-official/PINAC.git`
-3. Enable Google API with required scopes (Follow the instructions on <a href="https://github.com/rmondal-official/PINAC/blob/main/Google%20API%20Guide.md">Google API Guide </a>)
+2. Clone the repository 
+```
+git clone https://github.com/rmondal-official/PINAC.git
+```
+3. Enable Google API with required scopes  
+  _Follow the instructions on <a href="https://github.com/rmondal-official/PINAC/blob/main/Google%20API%20Guide.md">Google API Guide_</a>
 
-4. Navigate to the project directory `cd PINAC`  
-5. Run main.py `python main.py`
+4. Navigate to the project directory  
+```
+cd PINAC
+```  
+5. Run main.py 
+```
+python main.py
+```
 
 
 # Contribution 🎉
@@ -78,4 +59,4 @@ If you have any questions or suggestions or require guidance regarding contribut
 
 
 # License 
-This project is licensed under the GPL-3.0 license
+This project is licensed under the **GPL-3.0 license**
