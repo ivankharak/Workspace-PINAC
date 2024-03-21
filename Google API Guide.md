@@ -5,7 +5,7 @@ This guide will walk you through the **basic steps** of getting started with Goo
 
 ## 1. Create a Google Cloud Project
 
-First create your Google Cloud account using your gmail id.
+First, create your Google Cloud account using your Gmail ID.
 
 To use Google APIs, you'll need a Google Cloud Project. It's free to create and easy to manage. Head over to: [https://console.cloud.google.com/](https://console.cloud.google.com/)
 
@@ -32,12 +32,14 @@ Go to <a herf="https://console.cloud.google.com/apis/credentials/consent?orgonly
 Remember: (Set Publishing status:  **Testing App**, User type: **External** ) and fill other required details.
 
 > ### ⚠️ Required Scopes for App:  
-> 1. "https://www.googleapis.com/auth/contacts"  
-> 2. "https://mail.google.com/"   
-> 3. "https://www.googleapis.com/auth/calendar"  
-> 4. "https://www.googleapis.com/auth/tasks"
+> 1. 'openid',
+> 2. 'https://www.googleapis.com/auth/contacts'
+> 3. 'https://www.googleapis.com/auth/gmail.modify'
+> 4. 'https://www.googleapis.com/auth/calendar'
+> 5. 'https://www.googleapis.com/auth/tasks'
+> 6. 'https://www.googleapis.com/auth/drive'
 
-Next add **text users** (the account from which you are going fetch apps data).
+Next add **test users** (the account from which you are going to fetch app data).
 
 
 ## 4. Create Credentials
@@ -45,10 +47,10 @@ To access the API, you'll need credentials
 Go to the **credentials** then:  
 1. **Click Create Credentials > OAuth client ID.**
 2. **Click Application type > Desktop app**
-3. Don't change application name. It can cause somtime unwanted error
+3. Don't change the application name. It can sometimes cause some unwanted error
 4. Click **OK**
 5. **Download the JSON file**,
-6. Change the JSON file name to exactly `client_secret.json` and place it to `configs/` folder of the project.
+6. Change the JSON file name to exactly `client_secret.json` and place it in `configs/` folder of the project.
 
 
 
@@ -58,4 +60,4 @@ Go to the **credentials** then:
 pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
 ```
 
-## 5. Done !
+## 5. Done!
