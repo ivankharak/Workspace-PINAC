@@ -1,6 +1,6 @@
 # importing
 import json
-from apps.google.__init__ import create_service
+from src.google.__init__ import create_service
 
 
 class GoogleContactManager:

@@ -1,9 +1,9 @@
 import eel
 from functools import cache
 import dateutil.parser
-from ai_models import models
-from apps.google.gmail_bot import GoogleGmailManager
-from apps.google.calendar_bot import GoogleCalendarManager
+from src.ai_models import models
+from src.google.gmail_bot import GoogleGmailManager
+from src.google.calendar_bot import GoogleCalendarManager
 
 
 
@@ -49,14 +49,18 @@ def give_response(query):
         if "task is fetching upcoming events from Google Calendar (amount: " in response:
                 line = response.splitlines()[0]
                 amount = line.replace("task is fetching upcoming events from Google Calendar (amount: ", "").replace(")", "")
-                event_list = calendar.give_upcoming_event(int(amount))
+                try: event_list = calendar.give_upcoming_event(int(amount))
+                except: pass
         else:
-            event_list = calendar.give_upcoming_event(10)
-
-        draft_response = ""
-        for item in event_list:
-            formatted_time = formate_datetime(item[1])
-            draft_response += f"{formatted_time} : {item[2]}<br>"
+            try: event_list = calendar.give_upcoming_event(10)
+            except: pass
+        try:
+            draft_response = ""
+            for item in event_list:
+                formatted_time = formate_datetime(item[1])
+                draft_response += f"{formatted_time} : {item[2]}<br>"
+        except:
+            draft_response = "Sir, there is no upcoming events for you"
 
         response = draft_response.replace("\n", "<br>")
         response = f"Sure, here are your's upcoming events: <br><br>{response}"
@@ -64,12 +68,14 @@ def give_response(query):
 
     elif "task is fetching today's events from Google Calendar" in response:
         calendar = GoogleCalendarManager()
-        event_list = calendar.give_todays_event()
-
-        draft_response = ""
-        for item in event_list:
-            formatted_time = formate_datetime(item[1])
-            draft_response += f"{formatted_time} : {item[2]}<br>"
+        try:
+            event_list = calendar.give_todays_event()
+            draft_response = ""
+            for item in event_list:
+                formatted_time = formate_datetime(item[1])
+                draft_response += f"{formatted_time} : {item[2]}<br>"
+        except:
+            draft_response = "Sir, there is no upcoming events for you"
 
         response = draft_response.replace("\n", "<br>")
         response = f"Sure, here are your's upcoming events for today: <br><br>{response}"
@@ -78,3 +84,10 @@ def give_response(query):
     return response
 
 eel.start('index.html')
+
+
+""""
+First comment the whole above and run the below code, it will create google token for you.
+Then comment below code and run above code for running application.
+"""
+# activate = GoogleGmailManager()

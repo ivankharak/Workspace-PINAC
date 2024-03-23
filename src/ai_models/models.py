@@ -1,9 +1,9 @@
 import g4f
-from ai_models.training_data import tr_data
+from src.ai_models.training_data import dataset
 
 
 def ask_me(query):
-    messages = tr_data + [{"role": "user", "content": query}]
+    messages = dataset + [{"role": "user", "content": query}]
 
     response =  g4f.ChatCompletion.create(
         # model="gpt-4-turbo",

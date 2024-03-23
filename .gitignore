@@ -1,5 +1,6 @@
 .env
 .vscode
-configs/
+src/configs/client_secret.json
+src/configs/google_token.json
 __pycache__
 testing_field.py

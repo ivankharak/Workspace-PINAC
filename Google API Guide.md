@@ -1,4 +1,4 @@
-<h2 align="middle"> Getting Started with Google APIs :<br> A Beginner's Guide</h2>
+<h1 align="middle"> Getting Started with Google APIs<br></h2>
 
 This guide will walk you through the **basic steps** of getting started with Google APIs for this Project, making it easy for beginners.
 
@@ -14,7 +14,7 @@ Click **Create Project** and give it a descriptive name.
 
 ## 2. Enable Required APIs
 
-Go back to the <a herf="https://console.cloud.google.com/apis/library?orgonly=true&project=eco-notch-382007&supportedpurview=project">API Explorer Page</a> and find the specific API you want to use.    
+Go back to the <a href="https://console.cloud.google.com/apis/library?orgonly=true&project=eco-notch-382007&supportedpurview=project">API Explorer Page</a> and find the specific API you want to use.    
 For this project you need:  
 * **Google People API**
 * **Gmail API**
@@ -27,17 +27,16 @@ Click on it and navigate to the **Enable API** section.
 
 
 ## 3. Create App
-Go to <a herf="https://console.cloud.google.com/apis/credentials/consent?orgonly=true&project=eco-notch-382007&supportedpurview=project">This Page</a> and Create App.
+Go to <a href="https://console.cloud.google.com/apis/credentials/consent?orgonly=true&project=eco-notch-382007&supportedpurview=project">This Page</a> and Create App.
 
 Remember: (Set Publishing status:  **Testing App**, User type: **External** ) and fill other required details.
 
 > ### ⚠️ Required Scopes for App:  
-> 1. 'openid',
-> 2. 'https://www.googleapis.com/auth/contacts'
-> 3. 'https://www.googleapis.com/auth/gmail.modify'
-> 4. 'https://www.googleapis.com/auth/calendar'
-> 5. 'https://www.googleapis.com/auth/tasks'
-> 6. 'https://www.googleapis.com/auth/drive'
+> - 'https://www.googleapis.com/auth/contacts'
+> - 'https://www.googleapis.com/auth/gmail.modify'
+> - 'https://www.googleapis.com/auth/calendar'
+> - 'https://www.googleapis.com/auth/tasks'
+> - 'https://www.googleapis.com/auth/drive'  
 
 Next add **test users** (the account from which you are going to fetch app data).
 
@@ -50,7 +49,7 @@ Go to the **credentials** then:
 3. Don't change the application name. It can sometimes cause some unwanted error
 4. Click **OK**
 5. **Download the JSON file**,
-6. Change the JSON file name to exactly `client_secret.json` and place it in `configs/` folder of the project.
+6. Change the JSON file name to exactly `client_secret.json` and place it in `src/configs/` folder of the project.
 
 
 
