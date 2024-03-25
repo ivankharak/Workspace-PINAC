@@ -25,6 +25,7 @@ This is **PINAC-Workspace** - your ultimate **AI** companion! It's a versatile t
 # 🖥️ Features
 - **Gmail Integration:** Sending emails and creating drafts are now made even simpler, just ask AI to do it! Provide the necessary details and AI will create an email draft for you.
 - **Google Calendar Integration:** Stay on top of your day with a quick look at today's or upcoming events in your Google Calendar. Enjoy the seamless integration!
+- **Google Contact:** Now you can access you contacts in Google through PINAC !
 - **Having Query ?** Just ask AI ! AI will give you your answer.
 - **GUI Interface:** Now it has a beautiful GUI interface for chatting with AI and asking your queries to get answers!
 <img src="https://github.com/rmondal-official/PINAC-Workspace/blob/main/img/app_screenshot.jpg" alt="app screenshot">

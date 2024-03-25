@@ -1,18 +1,16 @@
 
 def clean_memory():
+    """Clear the memory file."""
     with open("ai_models/memory.txt", "w") as f:
-        f.write("")
+        f.clear()
 
 def save_memory(query, answer):
+    """Save the user query and assistant answer to the memory file."""
     with open("ai_models/memory.txt", "a") as f:
-        f.write('{"role": "user", "content": "' + query + '"}' + "\n")
-        f.write('{"role": "assistant", "content": "' + answer + '"}' + "\n")
+        f.write(f'{{"role": "user", "content": "{query}"}}\n')
+        f.write(f'{{"role": "assistant", "content": "{answer}"}}\n')
 
 def read_memory():
-    conversations = []
+    """Read and return the conversation history from the memory file."""
     with open("ai_models/memory.txt", "r") as f:
-            for line in f:
-                line_dict = eval(line)
-                conversations.append(line_dict)
-    return conversations
-
+        return [eval(line) for line in f]

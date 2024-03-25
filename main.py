@@ -1,86 +1,70 @@
 import eel
 from functools import cache
-import dateutil.parser
+from datetime import datetime
 from src.ai_models import models
 from src.google.gmail_bot import GoogleGmailManager
 from src.google.calendar_bot import GoogleCalendarManager
-
-
+from src.google.contact_bot import GoogleContactManager
 
 eel.init('UI/web')
 
 @cache
 def get_subject_body(text):
-    
     lines = text.split('\n')
     subject_index = next((i for i, line in enumerate(lines) if "Subject:" in line), None)
     body = '\n'.join(lines[subject_index+2:]) if subject_index is not None else text
-
-    for line in text.splitlines():
-        if "Subject" in line:
-            sub = line.replace("Subject: ", "")
-    return body, sub
-
+    subject = next((line.replace("Subject: ", "") for line in lines if "Subject" in line), None)
+    return body, subject
 
 @cache
-def formate_datetime(time_str: str):
-    dt = dateutil.parser.parse(time_str)
-    normal_datetime  = dt.strptime(time_str, "%Y-%m-%dT%H:%M:%S%z")
-    return normal_datetime
-
+def format_datetime(timestamp: str):
+    if "T" not in timestamp:
+        timestamp += "T00:00:00+05:30"
+    dt = datetime.strptime(timestamp, "%Y-%m-%dT%H:%M:%S%z")
+    return dt.strftime("%H.%M, %d/%m/%Y")
 
 @eel.expose
 @cache
 def give_response(query):
-    response = models.ask_me(query)
+    try:
+        response = models.ask_me(query)
+        response = response.replace("\n", "<br>")
 
-    if "task is sending email" in response:
-        body, subject = get_subject_body(response)
-        gmail = GoogleGmailManager()
-        draft = gmail.create_draft(body=body, subject=subject)
-        
-        body = body.replace("\n", "<br>")
-        response = f"Subject: {subject}<br><br>{body}<br><br><br>Email draft created: {draft}"
+        if "task is sending email" in response:
+            body, subject = get_subject_body(response)
+            gmail = GoogleGmailManager()
+            gmail.create_draft(body=body, subject=subject)
+            response = f"Subject: {subject}<br><br>{body}<br><br><br>Draft email created for you"
 
+        elif "task is fetching upcoming events from Calendar" in response:
+            calendar = GoogleCalendarManager()
+            amount = 10
+            if "task is fetching upcoming events from Calendar (amount: " in response:
+                amount = int(response.split("amount: ", 1)[1].split(")", 1)[0])
+            event_list = calendar.give_upcoming_event(amount)
+            draft_response = "<br>".join(f"{format_datetime(item[1])} : {item[2]}" for item in event_list)
+            response = f"Sure, here are your upcoming events: <br><br>{draft_response}"
 
-    elif "task is fetching upcoming events from Google Calendar" in response:
-        
-        calendar = GoogleCalendarManager()
-        if "task is fetching upcoming events from Google Calendar (amount: " in response:
-                line = response.splitlines()[0]
-                amount = line.replace("task is fetching upcoming events from Google Calendar (amount: ", "").replace(")", "")
-                try: event_list = calendar.give_upcoming_event(int(amount))
-                except: pass
-        else:
-            try: event_list = calendar.give_upcoming_event(10)
-            except: pass
-        try:
-            draft_response = ""
-            for item in event_list:
-                formatted_time = formate_datetime(item[1])
-                draft_response += f"{formatted_time} : {item[2]}<br>"
-        except:
-            draft_response = "Sir, there is no upcoming events for you"
-
-        response = draft_response.replace("\n", "<br>")
-        response = f"Sure, here are your's upcoming events: <br><br>{response}"
-
-
-    elif "task is fetching today's events from Google Calendar" in response:
-        calendar = GoogleCalendarManager()
-        try:
+        elif "task is fetching today's events from Calendar" in response:
+            calendar = GoogleCalendarManager()
             event_list = calendar.give_todays_event()
-            draft_response = ""
-            for item in event_list:
-                formatted_time = formate_datetime(item[1])
-                draft_response += f"{formatted_time} : {item[2]}<br>"
-        except:
-            draft_response = "Sir, there is no upcoming events for you"
+            draft_response = "<br>".join(f"{format_datetime(item[1])} : {item[2]}" for item in event_list)
+            response = f"Sure, here are your upcoming events for today: <br><br>{draft_response}"
 
-        response = draft_response.replace("\n", "<br>")
-        response = f"Sure, here are your's upcoming events for today: <br><br>{response}"
-
-    response = response.replace("\n", "<br>")
+        elif "task is fetching contact from Contact" in response:
+            name = models.find_name(query)
+            contact = GoogleContactManager()
+            contact_info = contact.give_phone_number(name)
+            print(type(contact_info))
+            print(contact_info)
+            if isinstance(contact_info[0], list):
+                draft_response = "<br>".join(f"{item[0]} : {item[1]}" for item in contact_info)
+            else: draft_response = f"<br>{contact_info[0]} : {contact_info[1]}"
+            response = f"Sure, here is your contact: <br>{draft_response}"
+    
+    except TypeError: response = "Unfortunately, the event you are searching for does not appear to be exist"
+    except UnboundLocalError: response = "we are unable to locate any contact number you are searching for in Google Contact"
+    except: response = "Oops! It seems like you're not connected to the internet. Please check your network connection and try again. If the problem persists, you might want to contact your service provider. We appreciate your patience!"
     return response
 
 eel.start('index.html')
