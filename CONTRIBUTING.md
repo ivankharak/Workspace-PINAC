@@ -1,21 +1,21 @@
-## Contributing to PINAC 🚀
+## Contributing to PINAC-Workspace 🚀
 
 We love your input! We want to make contributing to PINAC as easy and transparent as possible, whether it's:
 
-- Reporting a bug
+- Reporting a bug 🐛
 - Discussing the current state of the code
 - Submitting a fix
 - Proposing a new feature 🥳 
 - Becoming a maintainer ✨
 
-For every small improvement you contribute you will be helping push the frontiers of what's possible with PINAC Intelligent System 😃!
+For every small improvement you contribute, you will be helping push the frontiers of what's possible with PINAC-Workspace 😃!
 
 
 ## Getting Started
 
 💠 **Star the Repo:** Show your appreciation and stay updated with project activity by starring this repository.
 
-💠 **Fork it:** Create your own copy of the repository by clicking the "Fork" button. This allows you to make changes without affecting the original project.
+💠 **Fork it:** Create your copy of the repository by clicking the "Fork" button. This allows you to make changes without affecting the original project.
 
 💠 **Clone the Code:** Download your forked repository to your local machine using Git.
 
@@ -40,4 +40,4 @@ To allow your work to be integrated as seamlessly as possible, we advise you to:
 
 ✅ Reduce changes to the absolute **minimum** required for your bug fix or feature addition. _"It is not daily increase but daily decrease, hack away the unessential. The closer to the source, the less wastage there is."_ — Bruce Lee
 
-**Thank you ❤️ for your interest in contributing to this project!** We appreciate your time and effort, and we are excited to see what you can create.
+**Thank you ❤️ for your interest in contributing to this project!** We appreciate your time and effort and are excited to see what you can create.
