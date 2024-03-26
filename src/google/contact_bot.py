@@ -31,21 +31,14 @@ class GoogleContactManager:
         Returns:
             str: The phone number of the first matching contact, or None if no match is found.
         """
-        request = self.service.people().searchContacts(
-            pageSize=10, query=query, readMask="names,phoneNumbers").execute()
+        request = self.service.people().searchContacts(pageSize=10, query=query, readMask="names,phoneNumbers").execute()
         results = request.get("results", [])
+        contact = []
+        for person in range(len(results)):
+            name = results[person]['person']['names'][0]['displayName']
+            ph_no = results[person]['person']['phoneNumbers'][0]['canonicalForm']
+            contact.append([name, ph_no])
 
-        if len(results) == 1:
-            name = results[0]["person"]["names"][0]["displayName"]
-            ph_no = results[0]["person"]["phoneNumbers"][0]["canonicalForm"]
-            contact = [name, ph_no]
-
-        elif len(results) > 1:
-            contact = []
-            for person in range(len(results)):
-                name = results[person]['person']['names'][0]['displayName']
-                ph_no = results[person]['person']['phoneNumbers'][0]['canonicalForm']
-                contact.append([name, ph_no])
         return contact
 
 
@@ -59,25 +52,13 @@ class GoogleContactManager:
         Returns:
             str: The email address of the first matching contact, or None if no match is found.
         """
-
         request = self.service.people().searchContacts(pageSize=10, query=query, readMask="names,emailAddresses").execute()
         results = request.get("results", [])
-
-        if len(results) == 1:
-            name = results[0]["person"]["names"][0]["displayName"]
-            email = results[0]["person"]["emailAddresses"][0]["value"]
-
-        elif len(results) > 1:
-            email = []
-            for person in range(len(results)):
-                try:
-                    name = results[person]['person']['names'][0]['displayName']
-                    email = results[person]['person']['emailAddresses'][0]['value']
-                    email.append([name, email])
-
-                except Exception as error:
-                    email = None
-                    print(f"{type(error)} for {error}")
+        email = []
+        for person in range(len(results)):
+            name = results[person]['person']['names'][0]['displayName']
+            email = results[person]['person']['emailAddresses'][0]['value']
+            email.append([name, email])
             
         return email
 

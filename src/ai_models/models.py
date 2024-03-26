@@ -2,7 +2,7 @@ import g4f
 from functools import cache
 from src.ai_models.data.training_data import general_dataset, findName_dataset
 
-@cache
+# @cache
 def ask_me(query):
     """Generate a response for a general query."""
     messages = general_dataset + [{"role": "user", "content": query}]
