@@ -21,7 +21,7 @@ class GoogleCalendarManager:
             return e
     
 
-    def give_upcoming_event(self, amount: int):
+    def give_upcoming_event(self, amount=10):
         """
         Retrieve upcoming events from the calendar.
 
@@ -33,24 +33,13 @@ class GoogleCalendarManager:
             Returns None if no events are found.
         """
         now = datetime.datetime.utcnow().isoformat() + "Z"
-        events_result = (
-            self.service.events()
-            .list(
-                calendarId="primary",
-                timeMin=now,
-                maxResults=amount,
-                singleEvents=True,
-                orderBy="startTime",
-            ).execute())
+        events_result = self.service.events().list(calendarId="primary", timeMin=now, maxResults=amount, singleEvents=True, orderBy="startTime",).execute()
         events = events_result.get("items", [])
-        
-        if not events:
-            return None
-        
         event_list = []
         for event in events:
             start = event['start'].get('dateTime', event['start'].get('date'))
             event_list.append([str(event["id"]), start, event["summary"]])
+
         return event_list
 
 
@@ -61,21 +50,8 @@ class GoogleCalendarManager:
         """
         now = datetime.datetime.utcnow().isoformat() + "Z"
         end = str(now).split("T")[0] + "T23:59:59.00" + "Z"
-        events_result = (
-            self.service.events()
-            .list(
-                calendarId="primary",
-                timeMin=now,
-                maxResults=10,
-                timeMax=end,
-                singleEvents=True,
-                orderBy="startTime",
-            ).execute())
+        events_result = (self.service.events().list(calendarId="primary", timeMin=now, maxResults=10, timeMax=end, singleEvents=True, orderBy="startTime").execute())
         events = events_result.get("items", [])
-
-        if not events:
-            return None
-        
         event_list = []
         for event in events:
             start = event['start'].get('dateTime', event['start'].get('date'))
@@ -108,18 +84,12 @@ class GoogleCalendarManager:
         Returns:
             event_list (list): List of upcoming events.
         """
-        try:
-            now = datetime.datetime.utcnow().isoformat() + "Z"
-            events_result = self.service.events().list(calendarId=f"en.{str(country_name)}#holiday@group.v.calendar.google.com", timeMin=now, maxResults=10, singleEvents=True, orderBy='startTime').execute()
-            events = events_result.get('items', [])
+        now = datetime.datetime.utcnow().isoformat() + "Z"
+        events_result = self.service.events().list(calendarId=f"en.{str(country_name)}#holiday@group.v.calendar.google.com", timeMin=now, maxResults=10, singleEvents=True, orderBy='startTime').execute()
+        events = events_result.get('items', [])
+        event_list = []
+        for event in events:
+            start = event['start'].get('dateTime', event['start'].get('date'))
+            event_list.append([start, event["summary"]])
 
-            if not events:
-                return None
-
-            event_list = []
-            for event in events:
-                start = event['start'].get('dateTime', event['start'].get('date'))
-                event_list.append([start, event["summary"]])
-            return event_list
-        except Exception as e:
-            return e
+        return event_list
