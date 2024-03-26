@@ -39,7 +39,7 @@ function show_ai_ans(ans) {
 
 	let index = 0;
 	const timer = setInterval(function() {
-		p.textContent += ans[index];
+		p.innerHTML += ans[index].replace(/\n/g, '<br>');
 		container.scrollTop = container.scrollHeight; 
 		index++;
 		if (index >= ans.length) {

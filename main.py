@@ -29,7 +29,6 @@ def format_datetime(timestamp: str):
 def give_response(query):
     response = models.ask_me(query)
     print(response)
-    response = response.replace("\n", "<br>")
 
     if "order is sending email" in response:
         body, subject = get_subject_body(response)

@@ -1,7 +1,7 @@
 ### Try my another tool
 |                         |     |
 |-------------------------|------------------------|
-|<a href="https://github.com/rmondal-official/PINAC-Documents">**PINAC-Documents**</a>|You can ask Question from your uploaded PDF and AI will give ans from that PDF|
+|<a href="https://github.com/rmondal-official/PINAC-Documents">**PINAC-Documents**</a>|You can ask Questions from your uploaded PDF and AI will give ans from that PDF|
 |||
 
 
@@ -52,5 +52,7 @@ Interested in contributing? Contributions to PINAC-Documents core as well as con
 # 📄 License 
 This project is licensed under the <a href="https://github.com/rmondal-official/PINAC-Workspace/blob/1f50228e5033a7901e3b39b67d4da80d58bef0f7/LICENSE">**GPL-3.0 license**</a>   
 
-# 🤖 Author
-**Rajesh Mondal**
+# 🤖 Contributors
+<a href="https://github.com/rmondal-official/PINAC-Workspace/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=rmondal-official/PINAC-Workspace" />
+</a>
