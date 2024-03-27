@@ -1,205 +1,225 @@
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/*making root to control the dark and light modes */
+:root {
+  --primary-color: #0c0a18;
+  --logo-color: #ece2d5;
+}
+/* the new light theme feature */
+.light-theme {
+  --primary-color: #d6dbf5;
+  --logo-color: #1d1c1c;
 }
 
 @font-face {
-    font-family: nasa;
-    src: url(font/nasalization-rg.otf);
+  font-family: nasa;
+  src: url(font/nasalization-rg.otf);
 }
 
 @font-face {
-    font-family: yatra-one;
-    src: url(font/YatraOne-Regular.ttf);
+  font-family: yatra-one;
+  src: url(font/YatraOne-Regular.ttf);
 }
 
 @font-face {
-    font-family: ai-text;
-    src: url(font/KodeMono-VariableFont_wght.ttf);
+  font-family: ai-text;
+  src: url(font/KodeMono-VariableFont_wght.ttf);
 }
 
 @font-face {
-    font-family: teko;
-    src: url(font/Teko-Light.ttf);
+  font-family: teko;
+  src: url(font/Teko-Light.ttf);
 }
-
 
 /* header part  */
 
 header {
-    height: 10vh;
+  height: 10vh;
 
-    display: flex;
-    flex-direction: column;
-    background-color: #0c0a18;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--primary-color);
 }
 
 .header-content {
-    height: 8vh;
-    margin-top: 1vh;
-    margin-bottom: 1vh;
+  height: 8vh;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
 
-    margin-left: 1vw;
-    margin-right: 1vw;
+  margin-left: 1vw;
+  margin-right: 1vw;
 
-    padding-left: 3vw;
-    padding-right: 1.5vw;
+  padding-left: 3vw;
+  padding-right: 1.5vw;
 
-    border-radius: 7px;
+  border-radius: 7px;
 
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #0c0a18;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--primary-color);
 }
 
 #project-title {
-    font-size: 5vh;
-    color: #ece2d5;
-    font-family: nasa;
+  font-size: 5vh;
+  color: var(--logo-color);
+  font-family: nasa;
+}
+
+.header-content div {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+#icon {
+  width: 30px;
+  cursor: pointer;
 }
 
 .user-icon {
-    height: 6vh
+  height: 6vh;
 }
 
 .header-nav-button {
-    background-color: #0c0a18;
-    border-width: 0;
-    display: inline-block;
-    text-align: center;
-    vertical-align: middle;
-
+  background-color: var(--primary-color);
+  border-width: 0;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
 }
 
 /* main body */
 
 main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 90vh;
-    width: 100vw;
-    background-color: #0c0a18;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 90vh;
+  width: 100vw;
+  background-color: var(--primary-color);
 }
 
 #chat-box {
-    height: 77%;
-    margin-top: 1vh;
-    margin-bottom: 1vh;
+  height: 77%;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
 
-    width: 100%;
-    padding-top: 5vh;
+  width: 100%;
+  padding-top: 5vh;
 
-    border-radius: 7px;
-    border: 0;
-    color: #ece2d5;
-    background-color: #0c0a18;
-    overflow-y: scroll;
-    /* scrollbar-width: none; */
+  border-radius: 7px;
+  border: 0;
+  color: #ece2d5;
+  background-color: var(--primary-color);
+  overflow-y: scroll;
+  /* scrollbar-width: none; */
 }
 
 .welcome-text {
-    background-image: linear-gradient(90deg, rgb(224, 60, 115), blue);
-    background-clip: text;
-    color: transparent;
-    font-size: 10vh;
-    font-weight: bold;
-    font-family: nasa;
-    padding-left: 10vw;
-    margin: 20px;
+  background-image: linear-gradient(90deg, rgb(224, 60, 115), blue);
+  background-clip: text;
+  color: transparent;
+  font-size: 10vh;
+  font-weight: bold;
+  font-family: nasa;
+  padding-left: 10vw;
+  margin: 20px;
 }
 
 /* Chat Container  */
 .container {
-    display: flex;
-    flex-direction: row;
-    align-items: start;
-    margin-left: 10vw;
-    margin-right: 10vw;
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  margin-left: 10vw;
+  margin-right: 10vw;
 }
 
 .text-container {
-    display: inline;
-    border: 0;
-    border-radius: 7px;
-    padding: 20px;
+  display: inline;
+  border: 0;
+  border-radius: 7px;
+  padding: 20px;
 }
 
 .user {
-    display: inline;
-    background-color: #251286;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: inline;
+  background-color: #251286;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .ai {
-    display: inline;
-    background-color: transparent;
-    font-family: ai-text;
+  display: inline;
+  background-color: transparent;
+  font-family: ai-text;
 }
 
 #user-icon {
-    display: inline;
-    padding: 10px;
-    height: 6vh;
+  display: inline;
+  padding: 10px;
+  height: 6vh;
 }
 
 #ai-icon {
-    display: inline;
-    padding: 10px;
-    padding-left: 6vw;
-    height: 6vh;
+  display: inline;
+  padding: 10px;
+  padding-left: 6vw;
+  height: 6vh;
 }
 
 /* Input Box  */
 
 .message-form {
-    height: 8vh;
-    margin-top: 1vh;
+  height: 8vh;
+  margin-top: 1vh;
 
-    width: 100%;
+  width: 100%;
 
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 #message-input {
-    width: 70%;
-    padding-left: 1vw;
-    padding-right: 1vw;
-    margin-right: 1vw;
+  width: 70%;
+  padding-left: 1vw;
+  padding-right: 1vw;
+  margin-right: 1vw;
 
-    height: 80%;
-    padding-top: 1vh;
-    padding-bottom: 1vh;
+  height: 80%;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
 
-    border: 0;
-    border-radius: 10px;
-    background-color: #2b333b;
-    color: #ece2d5;
-    font-size: medium;
+  border: 0;
+  border-radius: 10px;
+  background-color: #2b333b;
+  color: #ece2d5;
+  font-size: medium;
 }
 
 #message-input::placeholder {
-    font-family: ai-text;
-    font-size: medium;
-    color: #ece2d5;
+  font-family: ai-text;
+  font-size: medium;
+  color: #ece2d5;
 }
 
 #send-button {
-    height: 100%;
-    width: 5vw;
+  height: 100%;
+  width: 5vw;
 
-    border: 0;
-    border-radius: 7px;
-    background-color: #ece2d5;
-    font-family: ai-text;
-    font-weight: bold;
+  border: 0;
+  border-radius: 7px;
+  background-color: #ece2d5;
+  font-family: ai-text;
+  font-weight: bold;
 }
 
 #send-button:hover {
-    background-color: #444;
+  background-color: #444;
 }
