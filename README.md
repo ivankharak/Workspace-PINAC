@@ -47,7 +47,6 @@ This project is licensed under the <a href="https://github.com/rmondal-official/
 
 ## 🤖 Contributors  
 Thanks to our contributors  
-[![](https://opencollective.com/html-react-parser/contributors.svg?width=890&button=false)](https://github.com/remarkablemark/html-react-parser/graphs/contributors)
-  
+
 > ### Try another tool
 > <a href="https://github.com/rmondal-official/PINAC-Documents">**PINAC-Documents**</a>: You can ask Questions from your uploaded PDF and AI will give answers from that PDF
