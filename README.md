@@ -45,7 +45,8 @@ Would you be interested in contributing? Contributions to PINAC-Documents core a
 ## 📄 License 
 This project is licensed under the <a href="https://github.com/rmondal-official/PINAC-Workspace/blob/1f50228e5033a7901e3b39b67d4da80d58bef0f7/LICENSE">**GPL-3.0 license**</a>   
 
-## 🤖 Contributors
+## 🤖 Contributors  
+Thanks to our contributors  
 <a href="https://github.com/rmondal-official/PINAC-Workspace/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=rmondal-official/PINAC-Workspace" />
 </a>  
