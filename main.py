@@ -34,7 +34,7 @@ def give_response(query):
         body, subject = get_subject_body(response)
         gmail = GoogleGmailManager()
         gmail.create_draft(body=body, subject=subject)
-        response = f"Subject: {subject}<br><br>{body}<br><br><br>Draft email created for you"
+        response = f"Subject: {subject}\n\n{body}\n\n\nDraft email created for you"
 
     elif "order is fetching upcoming events from Calendar" in response:
         calendar = GoogleCalendarManager()
@@ -43,7 +43,7 @@ def give_response(query):
             amount = int(response.split("amount: ", 1)[1].split(")", 1)[0])
         event_list = calendar.give_upcoming_event(amount)
         if event_list:
-            response = "Sure, here are your upcoming events: <br><br>" + "<br>".join(f"{format_datetime(item[1])} : {item[2]}" for item in event_list)
+            response = "Sure, here are your upcoming events: \n\n" + "\n".join(f"{format_datetime(item[1])} : {item[2]}" for item in event_list)
         else:
             response = "Unfortunately, the event you are searching for does not appear to be exist"
 
@@ -51,7 +51,7 @@ def give_response(query):
         calendar = GoogleCalendarManager()
         event_list = calendar.give_todays_event()
         if event_list:
-            response = "Sure, here are your upcoming events for today: <br><br>" + "<br>".join(f"{format_datetime(item[1])} : {item[2]}" for item in event_list)
+            response = "Sure, here are your upcoming events for today: \n\n" + "\n".join(f"{format_datetime(item[1])} : {item[2]}" for item in event_list)
         else:
             response = "I am unable to locate any event for today in Google Calendar"
 
@@ -60,7 +60,7 @@ def give_response(query):
         contact = GoogleContactManager()
         contact_info = contact.give_phone_number(name)
         if contact_info:
-            response = "Sure, here is your contact: <br>" + "<br>".join(f"{item[0]} : {item[1]}" for item in contact_info)
+            response = "Sure, here is your contact: \n\n" + "\n".join(f"{item[0]} : {item[1]}" for item in contact_info)
         else:
             response = "I am unable to locate any contact number you are searching for in Google Contact"    
     
@@ -68,7 +68,7 @@ def give_response(query):
         task = GoogleTaskManager()
         task_list = task.get_due_tasks()
         if task_list:
-            response = "Sure, here are your due tasks: <br><br>" + "<br>".join(f"{item[1]} : {item[0]}" for item in task_list)
+            response = "Sure, here are your due tasks: \n\n" + "\n".join(f"{item[1]} : {item[0]}" for item in task_list)
         else:
             response = "Hooray! 🎉 you don't have any due tasks !"
     

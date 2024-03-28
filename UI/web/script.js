@@ -22,7 +22,7 @@ messageInput.addEventListener("keydown", function (event) {
 
 function show_user_query(query) {
   document.querySelector("#chat-box").innerHTML +=
-    '<div class="container"><img id="user-icon" src="img/user_icon_2.png" alt=""><p class="text-container user">' +
+    '<br><div class="container"><img id="user-icon" src="img/user_icon_2.png" alt=""><p class="text-container user">' +
     query +
     "<br></p></div>";
   scrollIfNeeded();

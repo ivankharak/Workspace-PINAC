@@ -7,11 +7,27 @@
 :root {
   --primary-color: #0c0a18;
   --logo-color: #ece2d5;
+  --linear-gradient: linear-gradient(90deg, rgb(224, 60, 115), blue);
+  --user-text-container-bg: #251286;
+  --ai-text-container-bg: transparent;
+  --user-text-color: #ece2d5;
+  --ai-text-color: #ece2d5;
+  --input-box-bg: #2b333b;
+  --input-box-text-color: #ece2d5;
+  --send-button-bg: #ece2d5;
 }
 /* the new light theme feature */
 .light-theme {
-  --primary-color: #d6dbf5;
-  --logo-color: #1d1c1c;
+  --primary-color: #EBF2F7;
+  --logo-color: #494949;
+  --linear-gradient: linear-gradient(90deg, #0087fd, #ff00d4);
+  --user-text-container-bg: #0087fd;
+  --ai-text-container-bg: #e1e5ec;
+  --user-text-color: #ffffff;
+  --ai-text-color: #000000;
+  --input-box-bg: #ffffff;
+  --input-box-text-color: #000000;
+  --send-button-bg: #ffffff;
 }
 
 @font-face {
@@ -121,7 +137,7 @@ main {
 }
 
 .welcome-text {
-  background-image: linear-gradient(90deg, rgb(224, 60, 115), blue);
+  background-image: var(--linear-gradient);
   background-clip: text;
   color: transparent;
   font-size: 10vh;
@@ -149,13 +165,15 @@ main {
 
 .user {
   display: inline;
-  background-color: #251286;
+  color: var(--user-text-color);
+  background-color: var(--user-text-container-bg);
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .ai {
   display: inline;
-  background-color: transparent;
+  color: var(--ai-text-color);
+  background-color: var(--ai-text-container-bg);
   font-family: ai-text;
 }
 
@@ -198,15 +216,16 @@ main {
 
   border: 0;
   border-radius: 10px;
-  background-color: #2b333b;
-  color: #ece2d5;
+  background-color: var(--input-box-bg);
+  color: var(--input-box-text-color);
   font-size: medium;
+  outline: none;
 }
 
 #message-input::placeholder {
   font-family: ai-text;
   font-size: medium;
-  color: #ece2d5;
+  color: var(--input-box-text-color);
 }
 
 #send-button {
@@ -215,11 +234,12 @@ main {
 
   border: 0;
   border-radius: 7px;
-  background-color: #ece2d5;
+  background-color: var(--send-button-bg);
   font-family: ai-text;
   font-weight: bold;
 }
 
 #send-button:hover {
   background-color: #444;
+  color: #ffffff;
 }
