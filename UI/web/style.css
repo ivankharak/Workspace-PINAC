@@ -96,7 +96,15 @@ header {
   width: 30px;
   cursor: pointer;
 }
-
+.login-btn{
+  text-decoration:none;
+  color:white;
+  font-size:25px;
+  border-radius:10px;
+  font-family:nasa;
+  padding: 10px;
+  background-color:blue;
+}
 .user-icon {
   height: 6vh;
 }
