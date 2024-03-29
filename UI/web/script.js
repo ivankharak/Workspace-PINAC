@@ -60,13 +60,50 @@ function show_ai_ans(ans) {
 }
 
 function give_response() {
-  if (messageInput.value != 0) {
+  if (messageInput.value !== '') {
+
+    //Disable while AI generates response
+    messageInput.disabled = true;
+    sendButton.disabled = true;
+    
+    // Show user query
     show_user_query(messageInput.value);
+
+    // Show loading animation
+    showLoadingAnimation();
+
+    // Call AI response function
     eel.give_response(messageInput.value)(function (response) {
+      // Hide loading animation
+      hideLoadingAnimation();
+      // Show AI response
       show_ai_ans(response);
+
+      //Enbale after AI generates response
+      messageInput.disabled = false;
+      sendButton.disabled = false;
+
     });
   }
   messageInput.value = "";
+}
+
+function showLoadingAnimation() {
+  // Create loading animation elements
+  const loadingAnimation = document.createElement("div");
+  loadingAnimation.className = "loading-animation";
+  loadingAnimation.innerHTML = '<div class="dot"></div><div class="dot"></div><div class="dot"></div>';
+
+  // Append loading animation to chat box
+  chatBox.appendChild(loadingAnimation);
+}
+
+function hideLoadingAnimation() {
+  // Remove loading animation
+  const loadingAnimation = document.querySelector(".loading-animation");
+  if (loadingAnimation) {
+    loadingAnimation.remove();
+  }
 }
 
 function scrollIfNeeded() {
