@@ -7,8 +7,9 @@
 :root {
   --primary-color: #0c0a18;
   --logo-color: #ece2d5;
+  --signIn-button-bg: blue;
   --linear-gradient: linear-gradient(90deg, rgb(224, 60, 115), blue);
-  --user-text-container-bg: #251286;
+  --user-text-container-bg: #2e16a3;
   --ai-text-container-bg: transparent;
   --user-text-color: #ece2d5;
   --ai-text-color: #ece2d5;
@@ -20,6 +21,7 @@
 .light-theme {
   --primary-color: #EBF2F7;
   --logo-color: #494949;
+  --signIn-button-bg: #0087fd;
   --linear-gradient: linear-gradient(90deg, #0087fd, #ff00d4);
   --user-text-container-bg: #0087fd;
   --ai-text-container-bg: #e1e5ec;
@@ -96,14 +98,15 @@ header {
   width: 30px;
   cursor: pointer;
 }
-.login-btn{
+.signIn-btn{
   text-decoration:none;
   color:white;
-  font-size:25px;
+  font-size:1.1vw;
   border-radius:10px;
-  font-family:nasa;
+  font-family:ai-text;
+  font-weight: bold;
   padding: 10px;
-  background-color:blue;
+  background-color: var(--signIn-button-bg);
 }
 .user-icon {
   height: 6vh;
@@ -222,7 +225,7 @@ main {
   padding-top: 1vh;
   padding-bottom: 1vh;
 
-  border: 0;
+  border-width: 0;
   border-radius: 10px;
   background-color: var(--input-box-bg);
   color: var(--input-box-text-color);
