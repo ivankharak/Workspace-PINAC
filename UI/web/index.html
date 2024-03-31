@@ -9,33 +9,56 @@
 </head>
 
 <body>
-        <header>
-                <div class="header-content">
-                        <h1 id="project-title">PINAC</h1>
-                        <div>
-                                <img src="./img/sun.png" alt="theme-controller" id="icon">
-                                <a href="#" class="signIn-btn">Sign In</a>
+        
+
+        
+        <div class="sidebar" id="mySidebar">
+                <button class="menuButton" onclick="menu_close()">&times;</button>
+
+                <button class="newChatSidebar-btn" id="new-chat-btn" onclick="redirectToIndex()">New Chat</button>
+                <button class="aboutUs-btn" id="about-btn" onclick="redirectToAbout()">About Us</button>
+                <button class="profileSidebar-btn" id="profile-btn" onclick="redirectToProfile()">Profile</button>
+                <!-- Additional button(s) can be added here -->
+        </div>
+
+        <div class="content">
+                <header>
+                        <div class="header-content">
+                                <button class="openMenu" onclick="menu_open()">&#9776;</button>
+                                <h1 id="project-title">PINAC</h1>
+                                <div>
+                                        <img src="./img/sun.png" alt="theme-controller" id="icon">
+                                        <a href="#" class="signIn-btn">Sign In</a>
+                                </div>
                         </div>
-                </div>
-        </header>
+                </header>
+        
+                <main>
+                        <div id="chat-box">
+                                <p class="welcome-text">
+                                        Hello,<br>
+                                        How can I help you Today ?<br><br>
+                                </p>
+                                
+                                <!-- Chat messages will be added here -->
+                        </div>
+        
+                        <div class="message-form">
+                                <input type="text" id="message-input" placeholder="Ask me anything...">
+                                <button type="button" id="send-button" onclick="give_response()">Send</button>
+                        </div>
+                </main>
 
-        <main>
-                <div id="chat-box">
-                        <p class="welcome-text">
-                                Hello,<br>
-                                How can I help you Today ?<br><br>
-                        </p>
-                        
-                        <!-- Chat messages will be added here -->
-                </div>
+        </div>
 
-                <div class="message-form">
-                        <input type="text" id="message-input" placeholder="Ask me anything...">
-                        <button type="button" id="send-button" onclick="give_response()">Send</button>
-                </div>
-        </main>
+
+
         <script type="text/javascript" src="../eel.js"></script>
         <script src="script.js"></script>
+
+
+   
+       
 
 </body>
 

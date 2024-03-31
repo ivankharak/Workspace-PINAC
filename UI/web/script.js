@@ -114,3 +114,30 @@ function scrollIfNeeded() {
     chatBox.scrollTop = chatBox.scrollHeight;
   }
 }
+
+
+
+//functions to make the hamburger menu-->
+function menu_open() {
+  document.getElementById("mySidebar").style.display="block";
+}
+function menu_close() {
+  document.getElementById("mySidebar").style.display="none";
+}
+
+
+//functions to redirect the page to a new respective pages-->
+function redirectToIndex() {
+  window.location.href = 'index.html';
+}
+
+function redirectToAbout() {
+  window.location.href = 'about.html';
+}
+
+function redirectToProfile() {
+  window.location.href = 'profile.html';
+}
+
+
+
