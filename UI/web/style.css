@@ -16,6 +16,7 @@
   --input-box-bg: #2b333b;
   --input-box-text-color: #ece2d5;
   --send-button-bg: #ece2d5;
+  --loading-ani-color: #ece2d5;
 }
 
 /* the new light theme feature */
@@ -31,7 +32,7 @@
   --input-box-bg: #ffffff;
   --input-box-text-color: #000000;
   --send-button-bg: #ffffff;
-  
+  --loading-ani-color: #ff00d4;
 }
 
 @font-face {
@@ -273,7 +274,7 @@ main {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background-color: #ece2d5;
+  background-color: var(--loading-ani-color);
   margin-right: 5px;
   animation: bounce 0.5s infinite alternate;
 }

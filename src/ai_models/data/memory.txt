@@ -1,0 +1,4 @@
+{"role": "user", "content": "what are we taking about previously ?"}
+{"role": "assistant", "content": "We were discussing about "PINAC, tell me the phone number of my driver"
+
+order is fetching contact from Contact"}

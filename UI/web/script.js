@@ -127,7 +127,8 @@ function menu_close() {
 
 
 //functions to redirect the page to a new respective pages-->
-function redirectToIndex() {
+function clearChat() {
+  eel.clear_memory();
   window.location.href = 'index.html';
 }
 
