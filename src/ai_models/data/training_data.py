@@ -136,8 +136,6 @@ findName_dataset = [
         {"role": "assistant", "content": "bus driver"},
         {"role": "user", "content": "I want to call my mom"},
         {"role": "assistant", "content": "mom"},
-        {"role": "user", "content": "call jhon modo quickly"},
-        {"role": "assistant", "content": "jhon modo"},
-        {"role": "user", "content": "call baba-maa"},
-        {"role": "assistant", "content": "baba-maa"},
+        {"role": "user", "content": "call Jhon quickly"},
+        {"role": "assistant", "content": "Jhon"},
 ]

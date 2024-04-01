@@ -10,7 +10,7 @@
   --signIn-button-bg: blue;
   --linear-gradient: linear-gradient(90deg, rgb(224, 60, 115), blue);
   --user-text-container-bg: #2e16a3;
-  --ai-text-container-bg: transparent;
+  --ai-text-container-bg: rgba(109, 108, 108, 0.15);
   --user-text-color: #ece2d5;
   --ai-text-color: #ece2d5;
   --input-box-bg: #2b333b;
@@ -55,6 +55,16 @@
   src: url(font/Teko-Light.ttf);
 }
 
+ul {
+  display: flex;
+  align-items: center;
+}
+
+li{
+  list-style: none;
+  display: inline-block;
+}
+
 /* header part  */
 
 header {
@@ -89,11 +99,11 @@ header {
   font-size: 5vh;
   color: var(--logo-color);
   font-family: nasa;
+  margin-left: 2vw;
 }
 
 .header-content div {
   display: flex;
-  /* align-items: center; */
   align-items: start;
   gap: 50px;
 }
@@ -107,7 +117,7 @@ header {
   text-decoration: none;
   color: white;
   font-size: 1.1vw;
-  border-radius: 10px;
+  border-radius: 8px;
   font-family: ai-text;
   font-weight: bold;
   padding: 10px;
@@ -157,7 +167,7 @@ main {
   background-image: var(--linear-gradient);
   background-clip: text;
   color: transparent;
-  font-size: 10vh;
+  font-size: 5vw;
   font-weight: bold;
   font-family: nasa;
   padding-left: 10vw;
@@ -192,6 +202,12 @@ main {
   color: var(--ai-text-color);
   background-color: var(--ai-text-container-bg);
   font-family: ai-text;
+  box-shadow: 0 0 2px 0 ; 
+  backdrop-filter: blur(10px);
+}
+.light-theme .ai {
+  box-shadow: none;
+  backdrop-filter: none;
 }
 
 #user-icon {
@@ -308,7 +324,7 @@ main {
   background-color: #2b333b;
   padding-top: 20px;
   display: none;
-  
+
 }
 
 
