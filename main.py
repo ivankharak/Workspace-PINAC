@@ -6,8 +6,9 @@ from src.google.gmail_bot import GoogleGmailManager
 from src.google.calendar_bot import GoogleCalendarManager
 from src.google.contact_bot import GoogleContactManager
 from src.google.task_bot import GoogleTaskManager
-from src.ai_models.model_utils import clean_memory
+from src.ai_models.model_utils import save_history, clear_history
 
+clear_history()
 eel.init('UI/web')
 
 @cache
@@ -28,14 +29,13 @@ def format_datetime(timestamp: str):
 
 @eel.expose
 def clear_memory():
-    clean_memory()
+    clear_history()
 
 @eel.expose
 @cache
 def give_response(query):
-    try:
+        # try:
         response = models.ask_me(query)
-        print(response)
 
         if "order is sending email" in response:
             body, subject = get_subject_body(response)
@@ -85,9 +85,11 @@ def give_response(query):
         elif "order is fetching today's event and task from Calendar" in response:
             response = "Sorry, this feature is still not available, waiting for the next update"
 
-    except:
-        response = "Sorry something went wrong, please try again"
-    return response
+        save_history(query, response)
+
+        # except:
+        #     response = "Sorry something went wrong, please try again"
+        return response
 
 eel.start('index.html')
 
