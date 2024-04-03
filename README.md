@@ -11,8 +11,8 @@
 
 🚀 Welcome to PINAC-Workspace, your dynamic AI ally on the Google Workspace journey! Say hello to a world where tasks transform into adventures and productivity gets a makeover with a splash of charm! 🌟
 
-
 </div>
+
 ## 🌟 Features
 
 - **Effortless Gmail Integration:** Tired of typing? Delegate your email tasks to AI. Provide the details, and watch as AI swiftly composes and organizes your drafts.
