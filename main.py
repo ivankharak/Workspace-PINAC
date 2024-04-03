@@ -97,9 +97,3 @@ def give_response(query):
         return response
 
 eel.start('index.html')
-
-""""
-First comment the whole above and run the below code, it will create google token for you.
-Then comment below code and run above code for running application.
-"""
-# activate = GoogleGmailManager()
