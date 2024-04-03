@@ -37,22 +37,22 @@
 
 @font-face {
   font-family: nasa;
-  src: url(font/nasalization-rg.otf);
+  src: url(../font/nasalization-rg.otf);
 }
 
 @font-face {
   font-family: yatra-one;
-  src: url(font/YatraOne-Regular.ttf);
+  src: url(../font/YatraOne-Regular.ttf);
 }
 
 @font-face {
   font-family: ai-text;
-  src: url(font/KodeMono-VariableFont_wght.ttf);
+  src: url(../font/KodeMono-VariableFont_wght.ttf);
 }
 
 @font-face {
   font-family: teko;
-  src: url(font/Teko-Light.ttf);
+  src: url(../font/Teko-Light.ttf);
 }
 
 ul {
@@ -113,7 +113,7 @@ header {
   cursor: pointer;
 }
 
-.signIn-btn {
+.signUp-btn {
   text-decoration: none;
   color: white;
   font-size: 1.1vw;

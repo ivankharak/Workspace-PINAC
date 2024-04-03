@@ -2,6 +2,7 @@ import eel
 from functools import cache
 from datetime import datetime
 from src.ai_models import models
+from src.google.__init__ import create_service
 from src.google.gmail_bot import GoogleGmailManager
 from src.google.calendar_bot import GoogleCalendarManager
 from src.google.contact_bot import GoogleContactManager
@@ -9,7 +10,12 @@ from src.google.task_bot import GoogleTaskManager
 from src.ai_models.model_utils import save_history, clear_history
 
 clear_history()
-eel.init('UI/web')
+eel.init('UI')
+
+
+@eel.expose
+def sign_up():
+    create_service('gmail', 'v1')
 
 @cache
 def get_subject_body(text):
@@ -25,7 +31,6 @@ def format_datetime(timestamp: str):
         timestamp += "T00:00:00+05:30"
     dt = datetime.strptime(timestamp, "%Y-%m-%dT%H:%M:%S%z")
     return dt.strftime("%H.%M, %d/%m/%Y")
-
 
 @eel.expose
 def clear_memory():
