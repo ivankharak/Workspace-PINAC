@@ -27,7 +27,7 @@
   
 - **Stylish Interface:** Who says productivity tools can't be stylish? Dive into a world of sleek design and intuitive interaction with PINAC's visually stunning GUI. Engage in lively conversations, pose questions, and bask in the beauty of productivity reimagined! 🎨
 <br>
-<img src="https://github.com/rmondal-official/PINAC-Workspace/blob/main/img/app_screenshot.jpg" alt="app screenshot">
+<img src="https://github.com/rmondal-official/PINAC-Workspace/blob/main/img/intergace%20image.png" alt="app screenshot">
 
 ## 🚀 Getting Started
 
