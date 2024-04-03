@@ -31,23 +31,27 @@
 
 ## 🚀 Getting Started
 
-This tool is tested on Python `3.10.12` and `Ubuntu`. But this will work very well with other Python versions and Operating Systems as this tool doesn't require any particular OS-dependent library. But once search on Google for the Python version compatibility with Google Python modules. But still, if you face any error report it in the `Issues` section.
+This tool is tested on Python `3.10.12` and `Ubuntu`. But this will work very well with other Python versions and operating systems as this tool doesn't require any particular OS-dependent library. But once search on Google for the Python version compatibility with google python modules. But still, if you face any error report it in the `Issues` section.
 
-- **Clone the repository:** Get the masterpiece in you local system by running
-```
-git clone https://github.com/rmondal-official/PINAC-Workspace.git
-```
+- **Clone the repository:** Get the masterpiece in your local system by running
+  ```
+  git clone https://github.com/rmondal-official/PINAC-Workspace.git
+  ```
 
 - **Activate Google API:** Unlock the power of Google API by following <a href="https://github.com/rmondal-official/PINAC-Workspace/blob/main/Google%20API%20Guide.md">our Google API Guide</a>. Don't worry; we've got your back! Dive into the Google API Guide for a smooth setup.
 
 - **Navigate to the Project:** Step into the heart of PINAC-Workspace by navigating to the project directory: `cd PINAC-Workspace`
 
-- **Prepare Your Machine**: Create the **Virtual Environment** by the name `venv`, activate it by running `source venv/bin/activate`. Hey your workspace is ready! Now just install dependencies by running the command 
-```
-pip install -r requirements.txt
-```
-
-- **Launch Your Experience**: Once you've embarked on this exciting journey, run the `main.py` file and let the adventure begin! Connect to your Google Apps by clicking **Sign Up** Button.
+- **Prepare Your Machine**: Create the **Virtual Environment** by the name `venv` and activate it by running
+  ```
+  source venv/bin/activate
+  ```
+  Hey, your workspace is ready! Now just install dependencies by running the command 
+  ```
+  pip install -r requirements.txt
+  ```
+  
+- **Launch Your Experience**: Once you've embarked on this exciting journey, run the `main.py` file and let the adventure begin! Connect to your Google Apps by clicking the **Sign Up** Button.
 
 
 ## 🎉 Contribution!
