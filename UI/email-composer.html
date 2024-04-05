@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Compose Box</title>
+    <link rel="stylesheet" href="css/email-composer.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="compose-box">
+            <div class="to">
+                <label for="to">To:</label>
+                <input type="email" id="to" placeholder="Recipient Email">
+            </div>
+            <div class="subject">
+                <label for="subject">Subject:</label>
+                <input type="text" id="subject" placeholder="Enter Subject">
+            </div>
+            <div class="body">
+                <textarea id="body" placeholder="Compose your email here..."></textarea>
+            </div>
+            <div class="extra-buttons">
+                <input type="file" id="attachment" hidden />
+                <label for="attachment" id="attachment-label"><img id="attach-icon" src="img/attach-icon-dark.png" alt="attachment"></label>
+            </div>
+            <div class="actions">
+                <button id="goBack-button">Cancel</button>
+                <button id="send-button">Send</button>
+                <button id="save-draft-button">Save Draft</button>
+            </div>
+        </div>
+    </div>
+    <script src="script/email-composer.js"></script>
+</body>
+
+</html>
