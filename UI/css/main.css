@@ -312,8 +312,6 @@ main {
   }
 }
 
-
-
 .sidebar {
   background: rgba(255, 255, 255, 0.11);
   border-radius: 1px;
@@ -415,12 +413,28 @@ main {
   font-size: 20px;
 }
 
+.light-theme .profileSidebar-btn{
+  color: #000000;
+}
+.light-theme .newChatSidebar-btn{
+  color: #000000;
+}
+.light-theme .aboutUs-btn{
+  color: #000000;
+}
 .light-theme .sidebar {
-  background-color: #005eaf;
+  /* color: ; */
+  background: rgba(255, 255, 255, 0.11);
+  border-radius: 1px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10.3px);
+  -webkit-backdrop-filter: blur(10.3px);
+  border: 1px solid rgba(255, 255, 255, 0.32);
 }
 
 .light-theme .openMenu {
   color: #0087fd;
+
 }
 
 .menuButton {
@@ -431,3 +445,4 @@ main {
   cursor: pointer;
   font-size: 20px;
 }
+
