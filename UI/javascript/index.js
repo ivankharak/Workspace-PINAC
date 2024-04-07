@@ -1,55 +1,50 @@
-const messageForm = document.getElementsByClassName("message-form");
-const messageInput = document.getElementById("message-input");
-const sendButton = document.getElementById("send-button");
-const chatBox = document.querySelector("#chat-box");
-const themeController = document.querySelector("#icon");
+
+const messageForm = document.getElementsByClassName('message-form');
+const messageInput = document.getElementById('message-input');
+const sendButton = document.getElementById('send-button');
+const chatBox = document.querySelector('#chat-box');
+const themeController = document.querySelector('#icon');
 
 // setting up the light and dark theme
-themeController.addEventListener("click", () => {
-  document.body.classList.toggle("light-theme");
-  document.body.className === "light-theme"
-    ? (themeController.src = "./img/moon.png")
-    : (themeController.src = "./img/sun.png");
+themeController.addEventListener('click', () => {
+  document.body.classList.toggle('light-theme');
+  document.body.className === 'light-theme'
+    ? (themeController.src = './img/moon.png')
+    : (themeController.src = './img/sun.png');
 });
 
 let isScrolledToBottom = true;
 
-messageInput.addEventListener("keydown", function (event) {
-  if (event.key === "Enter") {
-    sendButton.click();
-  }
-});
+messageInput.addEventListener('keydown', function (event) {
+	if (event.key === 'Enter') {
+		sendButton.click()
+	}
+})
 
 function show_user_query(query) {
-  document.querySelector("#chat-box").innerHTML +=
-    '<br><div class="container"><img id="user-icon" src="img/user_icon_2.png" alt=""><p class="text-container user">' +
-    query +
-    "<br></p></div>";
+  document.querySelector('#chat-box').innerHTML +=
+    "<br><div class='container'><img id='user-icon' src='img/user_icon_2.png' alt=''><p class='text-container user'>" + query + "<br></p></div>";
   scrollIfNeeded();
 }
 
-// function show_ai_ans(ans) {
-
-// 	document.querySelector("#chat-box").innerHTML += '<div class="container"><img id="ai-icon" src="img/pinac_logo.png" alt=""><p class="text-container ai">' + ans + '<br><br><br></p></div>'
-// 	scrollToBottom(); // Scroll to bottom after showing AI response
-// }
+// function to show AI response with autoscroll
 function show_ai_ans(ans) {
-  const container = document.querySelector("#chat-box");
-  const div = document.createElement("div");
-  div.className = "container";
-  const img = document.createElement("img");
-  img.id = "ai-icon";
-  img.src = "img/pinac_logo.png";
-  img.alt = "";
-  const p = document.createElement("p");
-  p.className = "text-container ai";
+  const container = document.querySelector('#chat-box');
+  const div = document.createElement('div');
+  div.className = 'container';
+  const img = document.createElement('img');
+  img.id = 'ai-icon';
+  img.src = 'img/pinac_logo.png';
+  img.alt = '';
+  const p = document.createElement('p');
+  p.className = 'text-container ai';
   div.appendChild(img);
   div.appendChild(p);
   container.appendChild(div);
 
   let index = 0;
   const timer = setInterval(function () {
-    p.innerHTML += ans[index].replace(/\n/g, "<br>");
+    p.innerHTML += ans[index].replace(/\n/g, '<br>');
     container.scrollTop = container.scrollHeight;
     index++;
     if (index >= ans.length) {
@@ -58,6 +53,7 @@ function show_ai_ans(ans) {
     }
   }, 10);
 }
+
 
 function give_response() {
   if (messageInput.value !== '') {
@@ -79,13 +75,13 @@ function give_response() {
       // Show AI response
       show_ai_ans(response);
 
-      //Enbale after AI generates response
+      //Enable after AI generates response
       messageInput.disabled = false;
       sendButton.disabled = false;
 
     });
   }
-  messageInput.value = "";
+  messageInput.value = '';
 }
 
 function showLoadingAnimation() {

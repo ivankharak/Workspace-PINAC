@@ -16,6 +16,7 @@
   --input-box-bg: #2b333b;
   --input-box-text-color: #ece2d5;
   --send-button-bg: #ece2d5;
+  --send-button-text-color: #000000;
   --loading-ani-color: #ece2d5;
 }
 
@@ -23,15 +24,16 @@
 .light-theme {
   --primary-color: #fbf9f1;
   --logo-color: #494949;
-  --signIn-button-bg: #a7cbea;
-  --linear-gradient: linear-gradient(90deg, #0087fd, #ff00d4);
-  --user-text-container-bg: #aad7d9;
-  --ai-text-container-bg: #92c7cf;
+  --signIn-button-bg: #176B87;
+  --linear-gradient: linear-gradient(90deg, #249ac2, #ff00d4);
+  --user-text-container-bg: #176B87;
+  --ai-text-container-bg: rgba(209, 208, 208, 0.418);
   --user-text-color: #ffffff;
   --ai-text-color: #000000;
   --input-box-bg: #ffffff;
   --input-box-text-color: #000000;
-  --send-button-bg: #ffffff;
+  --send-button-bg: #176B87;
+  --send-button-text-color: #ffffff;
   --loading-ani-color: #ff00d4;
 }
 
@@ -202,12 +204,11 @@ main {
   color: var(--ai-text-color);
   background-color: var(--ai-text-container-bg);
   font-family: ai-text;
+}
+
+:root .ai {
   box-shadow: 0 0 2px 0;
   backdrop-filter: blur(10px);
-}
-.light-theme .ai {
-  box-shadow: none;
-  backdrop-filter: none;
 }
 
 #user-icon {
@@ -242,7 +243,6 @@ main {
   padding-left: 1vw;
   padding-right: 1vw;
   margin-right: 1vw;
-  /* margin-left: -6vw; */
   height: 80%;
   padding-top: 1vh;
   padding-bottom: 1vh;
@@ -261,6 +261,10 @@ main {
   color: var(--input-box-text-color);
 }
 
+.light-theme #message-input {
+  border: rgb(196, 196, 196) 1px solid;
+}
+
 #send-button {
   height: 100%;
   width: 5vw;
@@ -270,12 +274,14 @@ main {
   background-color: var(--send-button-bg);
   font-family: ai-text;
   font-weight: bold;
+  color: var(--send-button-text-color);
 }
 
 #send-button:hover {
   background-color: #444;
   color: #ffffff;
 }
+
 
 /* Loading animation */
 .loading-animation {
@@ -324,7 +330,7 @@ main {
   top: 0;
   left: 0;
   height: 100%;
-  width: 10%; /* Adjust width as needed */
+  width: 10%;
   /* background-color: #2b333b; */
   padding-top: 20px;
   display: none;
@@ -342,7 +348,8 @@ main {
   cursor: pointer;
   margin-bottom: 10px;
   margin-top: 10px;
-  font-size: 2vh;
+  font-size: medium;
+  font-family: nasa;
   border-radius: 5px;
   transition: box-shadow 0.3s ease-in-out;
   &:hover {
@@ -364,7 +371,8 @@ main {
   outline: none;
   cursor: pointer;
   margin-bottom: 10px;
-  font-size: 2vh;
+  font-size: medium;
+  font-family: nasa;
   border-radius: 5px;
   margin-top: 550px;
   transition: box-shadow 0.3s ease-in-out;
@@ -387,7 +395,8 @@ main {
   cursor: pointer;
   margin-bottom: 5px;
   margin-top: 15px;
-  font-size: 2vh;
+  font-size: medium;
+  font-family: nasa;
   border-radius: 5px;
   transition: box-shadow 0.3s ease-in-out;
   &:hover {
