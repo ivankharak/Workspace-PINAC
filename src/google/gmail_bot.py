@@ -8,7 +8,7 @@ from email.mime.application import MIMEApplication
 from email.mime.base import MIMEBase
 from email.mime.image import MIMEImage
 from email.mime.audio import MIMEAudio
-from src.google.__init__ import create_service
+from src.google.__init__ import createService
 
 
 class GoogleGmailManager:
@@ -25,14 +25,14 @@ class GoogleGmailManager:
         """
         self.sender_email = 'me'
         try:
-            self.service = create_service('gmail', 'v1')  # Connect to Gmail API
+            self.service = createService('gmail', 'v1')  # Connect to Gmail API
         except Exception as e:
             print(e)  # Provide specific error message
 
 
     #  (PART 1)---> FOR CREATING AND SENDING EMAILS
     
-    def create_message(self, recipient_email, subject, body, attachment=None):
+    def createMessage(self, recipient_email, subject, body, attachment=None):
         """
         Creates a MIME message for sending emails.
 
@@ -64,7 +64,7 @@ class GoogleGmailManager:
         return message.as_string()
 
     
-    def create_draft(self, body, recipient_email=None, subject=None, attachment=None):
+    def createDraft(self, body, recipient_email=None, subject=None, attachment=None):
         """
         Creates a draft message in Gmail.
 
@@ -99,7 +99,7 @@ class GoogleGmailManager:
 
 
     # for sending email with above created msg
-    def send_email(self, recipient_email, subject, body, attachment=None):
+    def sendEmail(self, recipient_email, subject, body, attachment=None):
         """
         Send an email with optional attachment to the specified recipient email address.
 
@@ -113,7 +113,7 @@ class GoogleGmailManager:
             bool or Exception: True if the email was sent successfully, otherwise an Exception object.
         """
         try:
-            message = self.create_message(recipient_email=recipient_email, subject=subject, body=body, attachment=attachment)
+            message = self.createMessage(recipient_email=recipient_email, subject=subject, body=body, attachment=attachment)
             message_encoded = base64.urlsafe_b64encode(message.encode('utf-8')).decode('utf-8')
             self.service.users().messages().send(userId='me', body={'raw': message_encoded}).execute()
             return True

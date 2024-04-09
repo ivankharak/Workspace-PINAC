@@ -11,7 +11,7 @@ from googleapiclient.discovery import build
 
 
 
-def create_service(build_name, version):
+def createService(build_name, version):
 
     # If modifying these scopes, delete the file google_token.json.']
     scopes = ['https://www.googleapis.com/auth/contacts', 'https://www.googleapis.com/auth/gmail.modify',
@@ -44,4 +44,4 @@ def create_service(build_name, version):
         print("Your token has been expired")
         os.remove(f"app_configs/google_token.json")
         print("creating new token for you")
-        create_service(build_name, version)
+        createService(build_name, version)

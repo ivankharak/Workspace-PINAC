@@ -4,5 +4,5 @@ function goBack() {
 }
 
 function goNext() {
-    eel.sign_up()
+    eel.signUp()
 }

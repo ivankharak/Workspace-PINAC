@@ -1,6 +1,6 @@
 # importing
 import json
-from src.google.__init__ import create_service
+from src.google.__init__ import createService
 
 
 class GoogleContactManager:
@@ -16,12 +16,12 @@ class GoogleContactManager:
             Exception: If an error occurs during Google People API service creation.
         """
         try:
-            self.service = create_service("people", "v1")
+            self.service = createService("people", "v1")
         except Exception as e:
             return e
 
 
-    def give_phone_number(self, query):
+    def phoneNumber(self, query):
         """
         Searches contacts for a given query and returns the phone number associated with the first match.
 
@@ -42,7 +42,7 @@ class GoogleContactManager:
         return contact
 
 
-    def give_email_address(self, query):
+    def emailAddress(self, query):
         """
         Searches contacts for a given query and returns the email address associated with the first match.
 
@@ -63,7 +63,7 @@ class GoogleContactManager:
         return email
 
 
-    def create_contact(self, **kwargs):
+    def createContact(self, **kwargs):
         """
         Creates a new contact using the provided information and saves it to Google Contacts.
 

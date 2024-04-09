@@ -1,5 +1,5 @@
 # import
-from src.google.__init__ import create_service
+from src.google.__init__ import createService
 
 
 class GoogleTaskManager:
@@ -14,10 +14,10 @@ class GoogleTaskManager:
         Raises:
             Exception: If an error occurs during Google Task API service creation.
         """
-        try: self.service = create_service('tasks', 'v1')
+        try: self.service = createService('tasks', 'v1')
         except Exception as e: return e
 
-    def get_due_tasks(self):
+    def dueTask(self):
         results = self.service.tasks().list(tasklist='@default', maxResults=10).execute()
         items = results.get('items', [])
         if items:

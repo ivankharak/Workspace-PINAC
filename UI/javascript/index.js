@@ -69,7 +69,7 @@ function give_response() {
     showLoadingAnimation();
 
     // Call AI response function
-    eel.give_response(messageInput.value)(function (response) {
+    eel.giveResponse(messageInput.value)(function (response) {
       // Hide loading animation
       hideLoadingAnimation();
       // Show AI response
@@ -124,7 +124,7 @@ function menu_close() {
 
 //functions to redirect the page to a new respective pages-->
 function clearChat() {
-  eel.clear_memory();
+  eel.clearMemory();
   window.location.href = 'index.html';
 }
 

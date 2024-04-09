@@ -1,29 +1,35 @@
-import g4f
-from functools import cache
-from src.ai_models.data.training_data import general_dataset, findName_dataset
-from src.ai_models.model_utils import read_history
 
-@cache
-def ask_me(query):
-    """Generate a response for a general query."""
-    history = read_history()
-    if history:
-        messages = general_dataset + history + [{"role": "user", "content": query}]
-    else:
-        messages = general_dataset + [{"role": "user", "content": query}]
-    response = g4f.ChatCompletion.create(
-        model=None,
-        provider=g4f.Provider.HuggingFace,  # Model: Llama2, HuggingFace, PerplexityLabs
-        messages=messages,
-        )
+import os
+from dotenv import load_dotenv
+from langchain_openai import ChatOpenAI
+from langchain.prompts.chat import ChatPromptTemplate
+from langchain.schema import BaseOutputParser
+
+from src.ai_models.data.training_data import dataset, findNameDataset
+from src.ai_models.model_utils import readHistory
+
+
+load_dotenv()
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+# HUGGINGFACEHUB_API_TOKEN = os.getenv("HUGGINGFACEHUB_API_TOKEN")
+
+class MyOutputParser(BaseOutputParser):
+    def parse(self, text: str) -> str:
+        return text
+
+llm = ChatOpenAI(openai_api_key=OPENAI_API_KEY, temperature=0.7, model_name="gpt-3.5-turbo")
+
+chat_prompt = ChatPromptTemplate.from_messages(dataset)
+namePrompt = ChatPromptTemplate.from_messages(findNameDataset)
+chain = chat_prompt|llm|MyOutputParser()
+nameChain = namePrompt|llm|MyOutputParser()
+
+print("chain created")
+
+def askAI(query):
+    response = chain.invoke({"text": query})
     return response
 
-@cache
-def find_name(query):
-    """Find a name in the dataset based on the query."""
-    messages = findName_dataset + [{"role": "user", "content": query}]
-    return g4f.ChatCompletion.create(
-        model=None,
-        provider=g4f.Provider.HuggingFace,
-        messages=messages
-        )
+def findName(user_input):
+    response = nameChain.invoke({"text": user_input})
+    return response

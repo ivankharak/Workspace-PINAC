@@ -1,5 +1,5 @@
 # importing
-from src.google.__init__ import create_service
+from src.google.__init__ import createService
 import datetime
 
 
@@ -16,12 +16,12 @@ class GoogleCalendarManager:
             Exception: If an error occurs during Google API service creation.
         """
         try:
-            self.service = create_service('calendar', 'v3')
+            self.service = createService('calendar', 'v3')
         except Exception as e:
             return e
     
 
-    def give_upcoming_event(self, amount=10):
+    def upcomingEvent(self, amount=10):
         """
         Retrieve upcoming events from the calendar.
 
@@ -43,7 +43,7 @@ class GoogleCalendarManager:
         return event_list
 
 
-    def give_todays_event(self):
+    def todaysEvent(self):
         """
         Retrieve today's events from the calendar and return a dictionary containing 
         event IDs as keys and their start time and summary as values.
@@ -59,37 +59,3 @@ class GoogleCalendarManager:
 
         return event_list
         
-        
-    def give_holidays(self, country_name="usa"):
-        """
-        Get holiday of any country. But all countries are not tested yet.
-        enter the name according to google calendar
-
-        Args:
-            country_name (str): Country code. Defaults to "usa".
-            tested options are:
-                - usa
-                - indian
-                - japanese
-                - uk
-                - french
-                - italian
-                - spain
-                - swedish
-                - german
-                - austrian
-                - danish
-                - dutch
-        
-        Returns:
-            event_list (list): List of upcoming events.
-        """
-        now = datetime.datetime.utcnow().isoformat() + "Z"
-        events_result = self.service.events().list(calendarId=f"en.{str(country_name)}#holiday@group.v.calendar.google.com", timeMin=now, maxResults=10, singleEvents=True, orderBy='startTime').execute()
-        events = events_result.get('items', [])
-        event_list = []
-        for event in events:
-            start = event['start'].get('dateTime', event['start'].get('date'))
-            event_list.append([start, event["summary"]])
-
-        return event_list
