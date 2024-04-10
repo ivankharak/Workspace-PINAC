@@ -9,7 +9,7 @@ from src.ai_models.data.training_data import dataset, findNameDataset
 from src.ai_models.model_utils import readHistory
 
 
-load_dotenv()
+load_dotenv(dotenv_path="src/configs/.env")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 # HUGGINGFACEHUB_API_TOKEN = os.getenv("HUGGINGFACEHUB_API_TOKEN")
 

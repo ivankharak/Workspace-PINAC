@@ -34,7 +34,7 @@ def formatDatetime(timestamp: str):
 
 @eel.expose
 def clearMemory():
-    clearHistory()
+    return clearHistory()
 
 @eel.expose
 @cache
