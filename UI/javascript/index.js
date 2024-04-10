@@ -4,7 +4,7 @@ const messageInput = document.getElementById('message-input');
 const sendButton = document.getElementById('send-button');
 const chatBox = document.querySelector('#chat-box');
 const themeController = document.querySelector('#icon');
-
+const welcomeText = document.getElementById('welcome-text');
 // setting up the light and dark theme
 themeController.addEventListener('click', () => {
   document.body.classList.toggle('light-theme');
@@ -17,6 +17,7 @@ let isScrolledToBottom = true;
 
 messageInput.addEventListener('keydown', function (event) {
 	if (event.key === 'Enter') {
+    welcomeText.remove();
 		sendButton.click()
 	}
 })

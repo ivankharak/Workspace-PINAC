@@ -2,63 +2,65 @@
 <html lang="en">
 
 <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>PINAC</title>
-        <link rel="stylesheet" href="css/index.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PINAC</title>
+  <link rel="stylesheet" href="css/index.css">
 </head>
 
 <body>
-        
 
-        
-        <div class="sidebar" id="mySidebar">
-                <button class="menuButton" onclick="menu_close()">&times;</button>
 
-                <button class="newChatSidebar-btn" id="new-chat-btn" onclick="clearChat()">New Chat</button>
-                <button class="aboutUs-btn" id="about-btn" onclick="redirectToAbout()">About Us</button>
-                <button class="profileSidebar-btn" id="profile-btn" onclick="redirectToProfile()">Profile</button>
-                <!-- Additional button(s) can be added here -->
+
+  <div class="sidebar" id="mySidebar">
+    <button class="menuButton" onclick="menu_close()">&times;</button>
+
+    <button class="newChatSidebar-btn" id="new-chat-btn" onclick="clearChat()">New Chat</button>
+    <button class="aboutUs-btn" id="about-btn" onclick="redirectToAbout()">About Us</button>
+    <button class="profileSidebar-btn" id="profile-btn" onclick="redirectToProfile()">Profile</button>
+    <!-- Additional button(s) can be added here -->
+  </div>
+
+  <div class="content">
+    <header>
+      <div class="header-content">
+        <ul>
+          <li><button class="openMenu" onclick="menu_open()">&#9776;</button></li>
+          <li>
+            <h1 id="project-title">PINAC</h1>
+          </li>
+        </ul>
+        <div>
+          <img src="./img/sun.png" alt="theme-controller" id="icon">
+          <a href="sign_up.html" class="signUp-btn">Sign Up</a>
         </div>
+      </div>
+    </header>
 
-        <div class="content">
-                <header>
-                        <div class="header-content">
-                                <ul>
-                                        <li><button class="openMenu" onclick="menu_open()">&#9776;</button></li>
-                                        <li><h1 id="project-title">PINAC</h1></li>
-                                </ul>
-                                <div>
-                                        <img src="./img/sun.png" alt="theme-controller" id="icon">
-                                        <a href="sign_up.html" class="signUp-btn">Sign Up</a>
-                                </div>
-                        </div>
-                </header>
-        
-                <main>
-                        <div id="chat-box">
-                                <p class="welcome-text">
-                                        Hello,<br>
-                                        How can I help you Today ?<br><br>
-                                </p>
-                                
-                                <!-- Chat messages will be added here -->
-                        </div>
-        
-                        <div class="message-form">
-                                <input type="text" id="message-input" placeholder="Ask me anything...">
-                                <button type="button" id="send-button" onclick="give_response()">Send</button>
-                        </div>
-                </main>
+    <main>
+      <div id="chat-box">
+        <p id="welcome-text" class="welcome-text">
+          Hello,<br>
+          How can I help you Today ?<br><br>
+        </p>
 
-        </div>
+        <!-- Chat messages will be added here -->
+      </div>
+
+      <div class="message-form">
+        <input type="text" id="message-input" placeholder="Ask me anything...">
+        <button type="button" id="send-button" onclick="give_response()">Send</button>
+      </div>
+    </main>
+
+  </div>
 
 
 
-        <script type="text/javascript" src="../eel.js"></script>
-        <script src="javascript/index.js"></script>
-   
-       
+  <script type="text/javascript" src="../eel.js"></script>
+  <script src="javascript/index.js"></script>
+
+
 
 </body>
 
