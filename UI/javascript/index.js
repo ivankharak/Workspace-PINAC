@@ -137,3 +137,39 @@ function redirectToProfile() {
   window.location.href = 'profile.html';
 }
 
+function displayAnimatedWelcomeText(delay = 200){
+  // Define multi line welcome message
+  const welcome_multi_msg = [
+    'Hello, how can I help you today.',
+    'Stay at the top of your schedule with me.',
+    'Have any questions? Just ask me.'
+  ];
+
+  let lineIndex = 0; // Initialize index to track current line
+  let charIndex = 0; // Initialize index to track current character within the line
+
+  const intervalId = setInterval(function() {
+    const line = welcome_multi_msg[lineIndex]; // Get the current line from the message
+    const char = line[charIndex]; // Get the current character from the line
+    const element = welcomeText;
+
+    element.innerHTML += char; 
+    charIndex++; // Move to the next character
+
+    if (charIndex == line.length){
+      charIndex = 0; // Reset character index
+      lineIndex++; // Move to the next line
+    
+    // If reached end of message, reset the cycle
+    if (lineIndex === welcome_multi_msg.length) {
+      lineIndex = 0;
+      element.innerHTML = ''; // Clear the welcome message
+    }else{
+      // Add a delay before clearing innerHTML
+      setTimeout(function() {
+        element.innerHTML = ''; // Clear the welcome message
+      }, delay=50);
+    }
+  }
+  }, delay); // Delay for displaying each character
+}
