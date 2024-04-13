@@ -3,15 +3,44 @@ const messageForm = document.getElementsByClassName('message-form');
 const messageInput = document.getElementById('message-input');
 const sendButton = document.getElementById('send-button');
 const chatBox = document.querySelector('#chat-box');
-const themeController = document.querySelector('#icon');
 const welcomeText = document.getElementById('welcome-text');
+
+
 // setting up the light and dark theme
-themeController.addEventListener('click', () => {
-  document.body.classList.toggle('light-theme');
-  document.body.className === 'light-theme'
-    ? (themeController.src = './img/moon.png')
-    : (themeController.src = './img/sun.png');
-});
+const changeTheme = () => {
+  const body = document.body;
+  const checkbox = document.getElementById('darkmode-toggle');
+  const newTheme = checkbox.checked ? 'light' : 'dark';
+
+  // Update body class and localStorage
+  body.classList.toggle('light-theme', newTheme === 'light');
+  localStorage.setItem('preferred-theme', newTheme);
+};
+
+// Checkbox change event listener
+const themeCheckbox = document.getElementById('darkmode-toggle');
+themeCheckbox.addEventListener('change', changeTheme);
+
+
+// Function to change theme on page reload based on local storage
+const changeThemeOnReload = () => {
+  const body = document.body;
+  const checkbox = document.getElementById('darkmode-toggle')
+  const preferredTheme = localStorage.getItem('preferred-theme');
+
+  // Update body class based on preferred theme
+  if (preferredTheme === 'light') {
+    checkbox.checked = true;
+    body.classList.toggle('light-theme');
+  }
+  else if (preferredTheme === 'dark') {
+    checkbox.checked = false;
+}
+};
+
+// Call the changeTheme function on page load (optional)
+window.addEventListener('load', changeThemeOnReload);
+
 
 let isScrolledToBottom = true;
 
