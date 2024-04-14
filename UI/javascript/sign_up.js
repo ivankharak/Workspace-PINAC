@@ -1,8 +1,8 @@
 
-function goBack() {
+const goBack = () => {
     window.location.href = 'index.html';
 }
 
-function goNext() {
+const goNext = () => {
     eel.signUp()
 }

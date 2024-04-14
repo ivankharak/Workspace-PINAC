@@ -51,14 +51,14 @@ messageInput.addEventListener('keydown', function (event) {
 	}
 })
 
-function show_user_query(query) {
+const show_user_query = (query) => {
   document.querySelector('#chat-box').innerHTML +=
     "<br><div class='container'><img id='user-icon' src='img/user_icon.png' alt=''><p class='text-container user'>" + query + "<br></p></div>";
   scrollIfNeeded();
 }
 
 // function to show AI response with autoscroll
-function show_ai_ans(ans) {
+const show_ai_ans = (ans) => {
   const container = document.querySelector('#chat-box');
   const div = document.createElement('div');
   div.className = 'container';
@@ -85,7 +85,7 @@ function show_ai_ans(ans) {
 }
 
 
-function give_response() {
+const give_response = () => {
   if (messageInput.value !== '') {
 
     //Disable while AI generates response
@@ -114,7 +114,7 @@ function give_response() {
   messageInput.value = '';
 }
 
-function showLoadingAnimation() {
+const showLoadingAnimation = () => {
   // Create loading animation elements
   const loadingAnimation = document.createElement("div");
   loadingAnimation.className = "loading-animation";
@@ -124,7 +124,7 @@ function showLoadingAnimation() {
   chatBox.appendChild(loadingAnimation);
 }
 
-function hideLoadingAnimation() {
+const hideLoadingAnimation = () => {
   // Remove loading animation
   const loadingAnimation = document.querySelector(".loading-animation");
   if (loadingAnimation) {
@@ -132,7 +132,7 @@ function hideLoadingAnimation() {
   }
 }
 
-function scrollIfNeeded() {
+const scrollIfNeeded = () => {
   isScrolledToBottom =
     chatBox.scrollHeight - chatBox.scrollTop === chatBox.clientHeight;
 
@@ -144,29 +144,29 @@ function scrollIfNeeded() {
 
 
 //functions to make the hamburger menu-->
-function menu_open() {
+const menu_open = () => {
   document.getElementById("mySidebar").style.display="block";
 }
-function menu_close() {
+const menu_close = () => {
   document.getElementById("mySidebar").style.display="none";
 }
 
 
 //functions to redirect the page to a new respective pages-->
-function clearChat() {
+const clearChat = () => {
   eel.clearMemory();
   window.location.href = 'index.html';
 }
 
-function redirectToAbout() {
+const redirectToAbout = () => {
   window.location.href = 'about.html';
 }
 
-function redirectToProfile() {
+const redirectToProfile = () => {
   window.location.href = 'profile.html';
 }
 
-function displayAnimatedWelcomeText(delay = 200){
+const displayAnimatedWelcomeText = (delay = 200) => {
   // Define multi line welcome message
   const welcome_multi_msg = [
     'Hello, how can I help you today.',
