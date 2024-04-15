@@ -20,13 +20,16 @@ class MyOutputParser(BaseOutputParser):
 llm = ChatOpenAI(openai_api_key=OPENAI_API_KEY, temperature=0.7, model_name="gpt-3.5-turbo")
 
 chat_prompt = ChatPromptTemplate.from_messages(dataset)
-namePrompt = ChatPromptTemplate.from_messages(findNameDataset)
 chain = chat_prompt|llm|MyOutputParser()
+
+namePrompt = ChatPromptTemplate.from_messages(findNameDataset)
 nameChain = namePrompt|llm|MyOutputParser()
 
 print("chain created")
 
-def askAI(query):
+def askAI(query: str, chatHistory: list):
+    # chat_prompt.extend(chatHistory)
+    # chat_prompt.append(query)
     response = chain.invoke({"text": query})
     return response
 
