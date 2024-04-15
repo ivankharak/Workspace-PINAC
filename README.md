@@ -42,6 +42,14 @@ This tool is tested on Python `3.10.12` and `Ubuntu`. But this will work very we
 
 - **Navigate to the Project:** Step into the heart of PINAC-Workspace by navigating to the project directory: `cd PINAC-Workspace`
 
+- **Obtain Your OpenAI API Key:** Create your OpenAI API key by going to <a href="https://platform.openai.com/api-keys">: Once you're logged in, navigate to the API Keys section and generate a new key.
+
+- **Create the .env File** Inside your project's /src/configs directory, create a new file named .env. It's important to note that this file is typically ignored by version control systems (like Git) to prevent accidental exposure of your secret key.
+
+- **Set the Environment Variable:** Open the .env file in a text editor and add the following line, replacing <YOUR_OPENAI_API_KEY> with your actual key:
+OPENAI_API_KEY=<YOUR_OPENAI_API_KEY>
+
+
 - **Prepare Your Machine**: Create the **Virtual Environment** by the name `venv` and activate it by running
   ```
   source venv/bin/activate
