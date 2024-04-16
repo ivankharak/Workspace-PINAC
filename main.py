@@ -1,7 +1,7 @@
 import eel
 from functools import cache
 import datetime, os
-from src.ai_models import models
+from src.ai_models import ChatGPT
 from src.google.__init__ import createService
 from src.google.gmail_bot import GoogleGmailManager
 from src.google.calendar_bot import GoogleCalendarManager
@@ -75,7 +75,7 @@ def giveResponse(query: str):
         # try:
         print(chatHistory)
         chatHistory.append(HumanMessage(content=query))
-        raw_response = models.askAI(query, chatHistory)
+        raw_response = ChatGPT.askAI(query, chatHistory)
 
         if "order is composing email" in raw_response:
             body, subject = decodeEmail(response)
@@ -108,7 +108,7 @@ def giveResponse(query: str):
             chatHistory.append(AIMessage(content=response))
 
         elif "order is fetching contact from Contact" in raw_response:
-            name = models.findName(query)
+            name = ChatGPT.findName(query)
             contact = GoogleContactManager()
             contact_info = contact.phoneNumber(name)
             chatHistory.append(AIMessage(content="order is fetching contact from Contact"))
