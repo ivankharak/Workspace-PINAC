@@ -1,6 +1,6 @@
 import eel
 from functools import cache
-import datetime
+import datetime, os
 from src.ai_models import models
 from src.google.__init__ import createService
 from src.google.gmail_bot import GoogleGmailManager
@@ -14,6 +14,13 @@ eel.init('UI')
 @eel.expose
 def signUp():
     createService('gmail', 'v1')
+
+@eel.expose
+def logIn():
+    if os.path.exists("src/configs/google_token.json"):
+        return True
+    else:
+        return False
 
 @cache
 def decodeEmail(text):

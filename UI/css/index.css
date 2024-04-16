@@ -129,7 +129,7 @@ label:active::after {
 }
 
 
-.signUp-btn {
+#signUp-btn {
   text-decoration: none;
   border-radius: 10px;
   font: bold small "ai-text";

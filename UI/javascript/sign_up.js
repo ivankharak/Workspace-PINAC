@@ -5,4 +5,5 @@ const goBack = () => {
 
 const goNext = () => {
     eel.signUp()
+    window.location.href = 'index.html';
 }

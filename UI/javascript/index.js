@@ -6,6 +6,18 @@ const chatBox = document.querySelector('#chat-box');
 const welcomeText = document.getElementById('welcome-text');
 
 
+// Check for user logIn, if user already Loged In then it removes Sign Up button
+const checkLogIn = () => { 
+  eel.logIn()(function(check){	 
+    if (check == true) {
+      document.querySelector('#signUp-btn').remove();
+    } 
+  });
+}
+// Call the checkLogIn function on page load
+window.addEventListener('load', checkLogIn);
+
+
 // setting up the light and dark theme
 const changeTheme = () => {
   const body = document.body;
@@ -37,8 +49,7 @@ const changeThemeOnReload = () => {
     checkbox.checked = false;
 }
 };
-
-// Call the changeTheme function on page load (optional)
+// Call the changeTheme function on page load
 window.addEventListener('load', changeThemeOnReload);
 
 
