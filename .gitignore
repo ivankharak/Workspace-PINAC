@@ -4,3 +4,6 @@ venv
 configs
 __pycache__
 testing_field.py
+testing_field.js
+testing_field.html
+testing_field.css

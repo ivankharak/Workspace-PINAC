@@ -1,6 +1,7 @@
 import eel
-from functools import cache
 import datetime, os
+from functools import cache
+from email_validator import validate_email
 from src.ai_models import ChatGPT
 from src.google.__init__ import createService
 from src.google.gmail_bot import GoogleGmailManager
@@ -39,7 +40,6 @@ def get_ordinal_suffix(day):  # This function helps determine the ordinal suffix
 @cache
 def formatDatetime(timestamp: str):
     timestamp= timestamp[:16]
-    print(timestamp)
     if "T" not in timestamp: 
         parsed_date = datetime.datetime.strptime(timestamp, "%Y-%m-%d")
         formatted_time = "whole day"
@@ -64,6 +64,29 @@ def formatDatetime(timestamp: str):
     return formatted_date, formatted_time
 
 @eel.expose
+def validateEmail(emailId):
+    try:
+        validate_email(emailId)
+        return True
+    except ValueError as e:
+        print(f"Invalid email address: {e}")
+        return False
+
+@eel.expose
+def sendInstEmail(recipient_email, subject, body):
+    gmail = GoogleGmailManager()
+    gmail.sendEmail(recipient_email, subject, body)
+
+@eel.expose
+def createDraftEmail(subject, body, recipient_email=None):
+    print("called")
+    gmail = GoogleGmailManager()
+    if recipient_email != None:
+        gmail.createDraft(body=body, recipient_email=recipient_email, subject=subject)
+    else:
+        gmail.createDraft(body=body, subject=subject)
+
+@eel.expose
 def clearMemory():
     chatHistory = []
 
@@ -71,41 +94,41 @@ chatHistory = []
 
 @eel.expose
 @cache
-def giveResponse(query: str):
+def giveResponseArray(query: str):
         # try:
-        print(chatHistory)
+        # print(chatHistory)
         chatHistory.append(HumanMessage(content=query))
         raw_response = ChatGPT.askAI(query, chatHistory)
 
         if "order is composing email" in raw_response:
-            body, subject = decodeEmail(response)
-            gmail = GoogleGmailManager()
-            gmail.createDraft(body=body, subject=subject)
-            response = f"Subject: {subject}\n\n{body}\n\n\nDraft email created for you"
-            chatHistory.append(AIMessage(content=f"order is composing email\n\n{response}"))
+            body, subject = decodeEmail(raw_response)
+            response = ["email", subject, body]
+            chatHistory.append(AIMessage(content=raw_response))
 
         elif "order is to fetch upcoming events from Calendar" in raw_response:
             calendar = GoogleCalendarManager()
             amount = 10
             chatHistory.append(AIMessage(content="order is to fetch upcoming events from Calendar"))
             if "order is to fetch upcoming events from Calendar (amount: " in raw_response:
-                amount = int(response.split("amount: ", 1)[1].split(")", 1)[0])
+                amount = int(raw_response.split("amount: ", 1)[1].split(")", 1)[0])
             event_list = calendar.upcomingEvent(amount)
             if event_list:
-                response = "Sure, here are your upcoming events: \n\n" + "\n".join(f"{formatDatetime(item[1])[0]}, {formatDatetime(item[1])[1]} : {item[2]}" for item in event_list)
+                text = "Sure, here are your upcoming events: \n\n" + "\n".join(f"{formatDatetime(item[1])[0]}, {formatDatetime(item[1])[1]} : {item[2]}" for item in event_list)
             else:
-                response = "Unfortunately, the event you are searching for does not appear to be exist"
-            chatHistory.append(AIMessage(content=response))
+                text = "Unfortunately, the event you are searching for does not appear to be exist"
+            response = ["calendar event", text]
+            chatHistory.append(AIMessage(content=text))
 
         elif "order is to fetch today's events from Calendar" in raw_response:
             calendar = GoogleCalendarManager()
             event_list = calendar.todaysEvent()
             chatHistory.append(AIMessage(content="order is to fetch today's events from Calendar"))
             if event_list:
-                response = "Sure, here are your upcoming events for today: \n\n" + "\n".join(f"{formatDatetime(item[1])[0]}, {formatDatetime(item[1])[1]} - {item[2]}" for item in event_list)
+                text = "Sure, here are your upcoming events for today: \n\n" + "\n".join(f"{formatDatetime(item[1])[0]}, {formatDatetime(item[1])[1]} - {item[2]}" for item in event_list)
             else:
-                response = "I am unable to locate any event for today in Google Calendar"
-            chatHistory.append(AIMessage(content=response))
+                text = "I am unable to locate any event for today in Google Calendar"
+            response = ["calendar today's events", text]
+            chatHistory.append(AIMessage(content=text))
 
         elif "order is fetching contact from Contact" in raw_response:
             name = ChatGPT.findName(query)
@@ -113,29 +136,31 @@ def giveResponse(query: str):
             contact_info = contact.phoneNumber(name)
             chatHistory.append(AIMessage(content="order is fetching contact from Contact"))
             if contact_info:
-                response = "Sure, here is your contact: \n\n" + "\n".join(f"{item[0]} : {item[1]}" for item in contact_info)
+                text = "Sure, here is your contact: \n\n" + "\n".join(f"{item[0]} : {item[1]}" for item in contact_info)
             else:
-                response = "I am unable to locate any contact number you are searching for in Google Contact"    
-            chatHistory.append(AIMessage(content=response))
+                text = "I am unable to locate any contact number you are searching for in Google Contact"
+            response = ["contact", text]
+            chatHistory.append(AIMessage(content=text))
 
         elif "order is to fetch task from Calendar" in raw_response:
             task = GoogleTaskManager()
             task_list = task.dueTask()
             chatHistory.append(AIMessage(content="order is to fetch task from Calendar"))
             if task_list:
-                response = "Sure, here are your due tasks: \n\n" + "\n".join(f"{formatDatetime(item[1])[0]}, {formatDatetime(item[1])[1]} - {item[0]}" for item in task_list)
+                text = "Sure, here are your due tasks: \n\n" + "\n".join(f"{formatDatetime(item[1])[0]}, {formatDatetime(item[1])[1]} - {item[0]}" for item in task_list)
             else:
-                response = "Hooray! 🎉 you don't have any due tasks !"
-            chatHistory.append(AIMessage(content=response))
+                text = "Hooray! 🎉 you don't have any due tasks !"
+            response = ["calendar task", text]
+            chatHistory.append(AIMessage(content=text))
 
         elif "order is fetching today's event and task from Calendar" in raw_response:
-            response = "Sorry, this feature is still not available, waiting for the next update"
+            text = "Sorry, this feature is still not available, waiting for the next update"
+            response = ["calendar all", text]
             chatHistory.append(AIMessage(content="order is fetching today's event and task from Calendar"))
-            chatHistory.append(AIMessage(content=response))
         
         else:
-            response = raw_response
-            chatHistory.append(AIMessage(content=response))
+            response = ["others", raw_response]
+            chatHistory.append(AIMessage(content=raw_response))
 
         # except:
         #     response = "Sorry something went wrong, please try again"

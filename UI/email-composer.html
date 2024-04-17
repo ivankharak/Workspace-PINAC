@@ -27,12 +27,13 @@
                     alt="attachment"></label>
         </div>
         <div class="actions">
-            <button id="goBack-button">Cancel</button>
-            <button id="send-button">Send</button>
-            <button id="save-draft-button">Save Draft</button>
+            <button id="goBack-button" onclick="goBack()">Cancel</button>
+            <button id="send-button" onclick="sendEmail()">Send</button>
+            <button id="save-draft-button" onclick="createDraft()">Save Draft</button>
         </div>
     </div>
-    <script src="script/email-composer.js"></script>
+    <script type="text/javascript" src="../eel.js"></script>
+    <script src="javascript/email-composer.js"></script>
 </body>
 
 </html>

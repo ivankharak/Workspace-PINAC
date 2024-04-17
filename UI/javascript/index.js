@@ -1,92 +1,91 @@
-
+// DOM Elements
 const messageForm = document.getElementsByClassName('message-form');
 const messageInput = document.getElementById('message-input');
 const sendButton = document.getElementById('send-button');
 const chatBox = document.querySelector('#chat-box');
 const welcomeText = document.getElementById('welcome-text');
+const themeCheckbox = document.getElementById('darkmode-toggle');
 
 
+// Initialization
+let isScrolledToBottom = true;
+
+
+// AI response showing conditions [ans cat, (ans/subject, body)]
+const final_response = (response) => {
+  let responseArray = Array.from(response)
+  if (responseArray[0] != 'email') {
+    return responseArray[1]
+  } else {
+    subject = responseArray[1]
+    body = responseArray[2]
+    localStorage.setItem('subject', subject);
+    localStorage.setItem('body', body);
+    window.location.href = 'email-composer.html'
+    return "You had reviewed composed email"
+  }
+}
+
+
+// Functions
 // Check for user logIn, if user already Loged In then it removes Sign Up button
-const checkLogIn = () => { 
-  eel.logIn()(function(check){	 
-    if (check == true) {
+const checkLogIn = () => {
+  eel.logIn()(function(check) {
+    if (check) {
       document.querySelector('#signUp-btn').remove();
-    } 
+    }
   });
 }
-// Call the checkLogIn function on page load
-window.addEventListener('load', checkLogIn);
-
 
 // setting up the light and dark theme
 const changeTheme = () => {
-  const body = document.body;
-  const checkbox = document.getElementById('darkmode-toggle');
-  const newTheme = checkbox.checked ? 'light' : 'dark';
-
-  // Update body class and localStorage
-  body.classList.toggle('light-theme', newTheme === 'light');
+  const newTheme = themeCheckbox.checked ? 'light' : 'dark';
+  document.body.classList.toggle('light-theme', newTheme === 'light');
   localStorage.setItem('preferred-theme', newTheme);
-};
-
-// Checkbox change event listener
-const themeCheckbox = document.getElementById('darkmode-toggle');
-themeCheckbox.addEventListener('change', changeTheme);
-
-
-// Function to change theme on page reload based on local storage
-const changeThemeOnReload = () => {
-  const body = document.body;
-  const checkbox = document.getElementById('darkmode-toggle')
-  const preferredTheme = localStorage.getItem('preferred-theme');
-
-  // Update body class based on preferred theme
-  if (preferredTheme === 'light') {
-    checkbox.checked = true;
-    body.classList.toggle('light-theme');
-  }
-  else if (preferredTheme === 'dark') {
-    checkbox.checked = false;
 }
-};
-// Call the changeTheme function on page load
-window.addEventListener('load', changeThemeOnReload);
 
+// to change theme on page reload based on local storage
+const changeThemeOnReload = () => {
+  const preferredTheme = localStorage.getItem('preferred-theme');
+  if (preferredTheme === 'light') {
+    themeCheckbox.checked = true;
+    document.body.classList.add('light-theme');
+  } else if (preferredTheme === 'dark') {
+    themeCheckbox.checked = false;
+    document.body.classList.remove('light-theme');
+  }
+}
 
-let isScrolledToBottom = true;
-
-messageInput.addEventListener('keydown', function (event) {
-	if (event.key === 'Enter') {
+// activates send button on clicking enter
+const handleEnterPress = (event) => {
+  if (event.key === 'Enter') {
     welcomeText.remove();
-		sendButton.click()
-	}
-})
+    sendButton.click();
+  }
+}
 
 const show_user_query = (query) => {
-  document.querySelector('#chat-box').innerHTML +=
-    "<br><div class='container'><img id='user-icon' src='img/user_icon.png' alt=''><p class='text-container user'>" + query + "<br></p></div>";
+  chatBox.innerHTML += "<br><div class='container'><img id='user-icon' src='img/user_icon.png' alt=''><p class='text-container user'>" + query + "<br></p></div>";
   scrollIfNeeded();
 }
 
 // function to show AI response with autoscroll
 const show_ai_ans = (ans) => {
-  const container = document.querySelector('#chat-box');
   const div = document.createElement('div');
   div.className = 'container';
   const img = document.createElement('img');
   img.id = 'ai-icon';
   img.src = 'img/pinac_logo.png';
-  img.alt = '';
   const p = document.createElement('p');
   p.className = 'text-container ai';
   div.appendChild(img);
   div.appendChild(p);
-  container.appendChild(div);
+  chatBox.appendChild(div);
 
   let index = 0;
-  const timer = setInterval(function () {
+  const timer = setInterval(function() {
     p.innerHTML += ans[index].replace(/\n/g, '<br>');
-    container.scrollTop = container.scrollHeight;
+    chatBox.scrollTop = chatBox.scrollHeight;
     index++;
     if (index >= ans.length) {
       clearInterval(timer);
@@ -95,48 +94,41 @@ const show_ai_ans = (ans) => {
   }, 10);
 }
 
-
 const give_response = () => {
   if (messageInput.value !== '') {
-
     //Disable while AI generates response
     messageInput.disabled = true;
     sendButton.disabled = true;
-    
     // Show user query
     show_user_query(messageInput.value);
-
     // Show loading animation
     showLoadingAnimation();
-
     // Call AI response function
-    eel.giveResponse(messageInput.value)(function (response) {
+    eel.giveResponseArray(messageInput.value)(function(responseArray) {
       // Hide loading animation
       hideLoadingAnimation();
       // Show AI response
+      response = final_response(responseArray)
       show_ai_ans(response);
-
       //Enable after AI generates response
       messageInput.disabled = false;
       sendButton.disabled = false;
-
     });
   }
   messageInput.value = '';
 }
 
+// Adds loading animation
 const showLoadingAnimation = () => {
-  // Create loading animation elements
   const loadingAnimation = document.createElement("div");
   loadingAnimation.className = "loading-animation";
   loadingAnimation.innerHTML = '<div class="dot"></div><div class="dot"></div><div class="dot"></div>';
-
   // Append loading animation to chat box
   chatBox.appendChild(loadingAnimation);
 }
 
+// Remove loading animation
 const hideLoadingAnimation = () => {
-  // Remove loading animation
   const loadingAnimation = document.querySelector(".loading-animation");
   if (loadingAnimation) {
     loadingAnimation.remove();
@@ -144,26 +136,24 @@ const hideLoadingAnimation = () => {
 }
 
 const scrollIfNeeded = () => {
-  isScrolledToBottom =
-    chatBox.scrollHeight - chatBox.scrollTop === chatBox.clientHeight;
-
+  isScrolledToBottom = chatBox.scrollHeight - chatBox.scrollTop === chatBox.clientHeight;
   if (isScrolledToBottom) {
     chatBox.scrollTop = chatBox.scrollHeight;
   }
 }
 
 
-
-//functions to make the hamburger menu-->
+// Menu Functions
 const menu_open = () => {
-  document.getElementById("mySidebar").style.display="block";
+  document.getElementById('mySidebar').style.display = 'block';
 }
+
 const menu_close = () => {
-  document.getElementById("mySidebar").style.display="none";
+  document.getElementById('mySidebar').style.display = 'none';
 }
 
 
-//functions to redirect the page to a new respective pages-->
+// Redirection Functions
 const clearChat = () => {
   eel.clearMemory();
   window.location.href = 'index.html';
@@ -177,6 +167,8 @@ const redirectToProfile = () => {
   window.location.href = 'profile.html';
 }
 
+
+// Welcome Text Animation
 const displayAnimatedWelcomeText = (delay = 200) => {
   // Define multi line welcome message
   const welcome_multi_msg = [
@@ -213,3 +205,10 @@ const displayAnimatedWelcomeText = (delay = 200) => {
   }
   }, delay); // Delay for displaying each character
 }
+
+
+// Event Listeners
+window.addEventListener('load', checkLogIn);
+window.addEventListener('load', changeThemeOnReload);
+themeCheckbox.addEventListener('change', changeTheme);
+messageInput.addEventListener('keydown', handleEnterPress);
