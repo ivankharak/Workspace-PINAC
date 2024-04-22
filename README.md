@@ -1,3 +1,23 @@
+
+## ⚠️ Repository Notice ⚠️
+
+**Important Update**: This repository for `PINAC-Workspace` is no longer being actively maintained and will be **closing soon**. We are excited to announce that development will continue in our new repository, **'PINAC-Workspace 2.0'**
+
+## ✨ Embracing Evolution: The Journey to PINAC-Workspace 2.0
+
+As we continue to innovate and improve, we've realized that the **Eel framework**, while robust, offers limited features for our ambitious goals. That's why we're thrilled to introduce **PINAC-Workspace 2.0**—a leap forward into a more dynamic and expansive development environment.
+
+Here's what to expect with **PINAC-Workspace 2.0**:
+- A seamless integration of **Electron JS** for a robust core and **React JS** for a responsive frontend, complemented by the power of Python in the backend.
+- Enhanced optimization for **multiplatform compatibility**, ensuring a smooth and consistent experience across all devices.
+- A commitment to **code clarity** and maintainability, making it easier for developers to contribute and collaborate.
+- Recognition and incorporation of **community contributions**—your valuable code from PINAC-Workspace will be part of this new chapter.
+
+We're excited for you to join us on this journey to a more versatile and powerful workspace. Stay tuned for the official launch of **PINAC-Workspace 2.0**!
+
+
+
+
 <img src="https://github.com/rmondal-official/PINAC-Workspace/blob/main/img/readme_header.png" alt="">
 <div align="middle">
   

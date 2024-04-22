@@ -35,13 +35,12 @@ class GoogleDriveManager:
         """
         results = self.service.files().list(pageSize=amount).execute()
         files = results.get('files', [])
+        file_list = []
+        for file in files:
+            file_list.append(file['name'])
 
-        if not files:
-            print('No files found.')
-        else:
-            print('Files:')
-            for file in files:
-                print(file['name'])
+        return file_list
+
 
     def searchFile(self, file_name: str):
         """
@@ -55,14 +54,13 @@ class GoogleDriveManager:
         query = f"name contains '{file_name}'"
         results = self.service.files().list(pageSize=10, q=query).execute()  # Removed pageSize
         files = results.get('files', [])
+        file_list = []
+        for file in files:
+            file_list.append([file['id'], file['name']])
 
-        if not files:
-            print('No files found matching the search criteria.')
-        else:
-            print('Files matching the search:')
-            for file in files:
-                print(file['name'], file['id'])
+        return file_list
 
+    
     def downloadFile(self, file_id: str, file_name: str):  # actual file's name with it's file extension
         """
         Downloads a file from your Google Drive by its ID.
@@ -89,14 +87,11 @@ class GoogleDriveManager:
             # Write the received data to the file
             with open(file_name, 'wb') as f:
                 shutil.copyfileobj(fh, f)
-            print("File Downloaded")
-            # Return True if file Downloaded successfully
             return True
-
+        
         except:
-            # Return False if something went wrong
-            print("Something went wrong.")
             return False
+        
 
     def uploadFile(self, filepath: str):
         """
@@ -116,10 +111,8 @@ class GoogleDriveManager:
         try:
             media = MediaFileUpload(filepath, mimetype=mimetype)
             # Create a new file in the Drive storage
-            file = self.service.files().create(body=file_metadata, media_body=media, fields='id').execute()
-            print("File Uploaded.")
+            self.service.files().create(body=file_metadata, media_body=media, fields='id').execute()
+            return True
 
-        except Exception as e:
-            raise e
-
-
+        except:
+            return False
